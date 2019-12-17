@@ -1,0 +1,115 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+/*Chinh menu*/
+#slidebar{
+    width: 200px;
+    height: 100%;
+    position: fixed;
+    background-color: #005cbf;
+    left: -200px;
+    transition: all 500ms linear;
+}
+
+#slidebar ul li a {
+    float: none;
+    color: white;
+    width: 100%;
+    display: block;
+    text-decoration: none;
+    text-align: left;
+    padding: 10px 5px;
+    border-bottom: 1px solid white;
+}
+#slidebar .toggler
+{
+    position: absolute;
+    left: 230px;
+    top: 10px;
+}
+#slidebar .toggler span{
+    width: 20px;
+    height: 3px;
+    background-color:white;
+    display: block;
+    margin: 5px 0px;
+}
+#slidebar.active{
+    left: 0px;
+}
+#slidebar ul a:hover{
+    background-color: #b3d7ff;
+}
+.tab-content{
+    padding-top : 100px;
+    background-color: white;
+    border: none;
+}
+#Xacnhandangkiduthi{
+    float: right;
+    color: white;
+    border: none;
+    background-color: #005cbf;
+    width: 80px;
+    height: 35px;
+    border-radius: 5px;
+}
+#Xacnhandangkiduthi:hover{
+    background-color: #b3d7ff;
+}
+/*Chinh toolbar*/
+.toolbar{
+    position: fixed;
+    width: 100%;
+    height: 50px;
+    background-color: #377bd1;
+}
+.drop_from_user{
+    float: right;
+    overflow: hidden;
+}
+.toolbar .dropbtn {
+    font-size: 13px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 12px 16px;
+    background-color: #377bd1;
+    margin: 0;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #005cbf;
+    min-width:1px;
+    box-shadow: 0px 16px 16px 0px #005cbf;
+    z-index: 1;
+}
+.dropdown-content a {
+    float: none;
+    color: white;
+    padding: 12px 10px;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    border-bottom:1px solid white;
+}
+.dropdown-content a:hover {
+    background-color: #377bd1;
+
+}
+.drop_from_user:hover .dropdown-content{
+    display: block;
+}
+.btn-default{
+    background-color: #005cbf;
+    border: none;
+    color: white;
+}
+.btn-default:hover{
+    background-color: #7abaff;
+}
+.close{
+    color: #005cbf;
+}
