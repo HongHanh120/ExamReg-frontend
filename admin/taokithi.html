@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>trang admin</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <script src="../user.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="monhoc.css">
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+<!--thanh chuc nang tren dau-->
+<div class="toolbar">
+    <div class="drop_from_user">
+        <button class="dropbtn">Ninh Hong Diep
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="#">Thong tin ca nhan</a>
+            <a href="#" id="logOut" type="button"  data-toggle="modal" data-target="#myModal">Dang xuat</a>
+        </div>
+    </div>
+    <!--menu-->
+
+    <div id="slidebar">
+        <div class="toggler" onclick="myslide()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul >
+
+            <li ><a href="monhoc.html"   ><i class="fas fa-book"></i>  Mon hoc</a></li>
+            <li><a href="sinhvien.html"><i class="fas fa-user"></i>Sinh vien</a></li>
+            <li><a href="lophocphan.html"><i class="fas fa-book"></i>Lop hoc phan</a></li>
+            <li><a href="taokithi.html" ><i class="fas fa-folder"></i>Tao ki thi</a></li>
+        </ul>
+    </div>
+
+</div>
+<div class="container-fluid" id="quanlimonhoc">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4"style="font-size: 200%">
+        <p>Tao ki thi</p>
+    </div>
+    <div class="card shadow mb-3">
+        <div class="card-body">
+            <div class="container-fluid p-0 table-responsive">
+                <div class="form-inline">
+                    <div class="form-group">
+                        <label>Hien thi</label>
+                        <select class="custom-select custom-select-sm form-control form-control-sm">
+                            <option>10</option>
+                            <option>15</option>
+                            <option>20</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="timmonhoc">
+                        <label>Tim kiem</label>
+                        <input type="search" class="form-control form-control-sm" placeholder="Nhập tên môn học">
+                    </div>
+                    <div ><label >Danh sach mon hoc</label></div>
+
+                </div>
+                <table id="subTable" class="table table-bordered p-0 table-striped my-table"style="color: black; text-align:center;">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th>Stt</th>
+                        <th>Mã kì thi</th>
+                        <th>Tên Kỳ thi</th>
+                        <th>#</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+                <div class="row w-100 m-0 mt-3">
+                    <div class="col-sm-12 col-md-5">
+                        <p id="subTable_info"></p>
+                    </div>
+                    <div class="col-sm-12 col-md-7 d-flex justify-content-end p-0">
+                        <div class="dataTables_paginate paging_simple_numbers" id="subTable_paginate">
+                            <ul class="pagination m-0">
+                                <li class="paginate_button page-item previous disabled" id="subTable_previous"onclick="previousPage()">
+                                    <a class="page-link">
+                                        <i class="fas fa-angle-double-left clickable"></i>
+                                    </a>
+                                </li>
+                                <li class="paginate_button page-item next disabled" id="subTable_next"onclick="nexPage()">
+                                    <a class="page-link" >
+                                        <i class="fas fa-angle-double-right clickable"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="float-right">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addsubjectModal" data-whatever="@mdo">Thêm Ki Thi</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="addsubjectModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">THEM KI THI</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="codesubject" class="col-form-label">Ma Ki Thi:</label>
+                        <input type="text" class="form-control" id="codesubject">
+                    </div>
+                    <div class="form-group">
+                        <label for="namesubject" class="col-form-label">Ten Ki Thi:</label>
+                        <input type="text"  class="form-control" id="namesubject"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Tin Chi:</label>
+                        <input type="text" class="form-control" id="message-text"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Them Ki Thi</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--dang xuat-->
+<div class="container">
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Ban co chac chan muon dang xuat.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Dang xuat</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--Xac nhan dang ki thi-->
+</div>
+<div class="container">
+    <div class="modal fade" id="myModal-confirm" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Ban co chac chan muon dang ki du thi.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Xac nhan</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+
+</body>
+</html>
