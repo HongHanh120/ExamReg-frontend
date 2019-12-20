@@ -9,11 +9,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-    <script src="../user.js"></script>
+
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
           integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link rel="stylesheet" href="monhoc.css">
     <link rel="stylesheet" href="admin.css">
+
 </head>
 <body>
 <!--thanh chuc nang tren dau-->
@@ -65,16 +66,17 @@
                         <label>Tim kiem</label>
                         <input type="search" class="form-control form-control-sm" placeholder="Nhập tên môn học">
                     </div>
-                    <div ><label >Danh sach mon hoc</label></div>
+                    <div style="font-size: 120%; margin-top: 20px"><label >Danh sach cac ki thi da tao</label></div>
 
                 </div>
-                <table id="subTable" class="table table-bordered p-0 table-striped my-table"style="color: black; text-align:center;">
+                <table id="termTable" class="table table-bordered p-0 table-striped my-table"style="color: black; text-align:center;">
                     <thead class="thead-dark">
                     <tr>
                         <th>Stt</th>
                         <th>Mã kì thi</th>
                         <th>Tên Kỳ thi</th>
-                        <th>#</th>
+                        <th>Thoi gian</th>
+                        <th>Chinh sua, xoa</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -143,6 +145,60 @@
         </div>
     </div>
 </div>
+<!--chinh sua thong tin-->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="fixcodesubject" class="col-form-label">Ma Ki thi:</label>
+                        <input type="text" class="form-control" id="fixcodesubject">
+                    </div>
+                    <div class="form-group">
+                        <label for="fixnamesubject" class="col-form-label">Ten Ki Thi:</label>
+                        <input type="text"  class="form-control" id="fixnamesubject"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="fixportal" class="col-form-label">Thoi Gian:</label>
+                        <input type="text" class="form-control" id="fixportal"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Xac nhan</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--xac nhan xoa-->
+<div class="container">
+    <div class="modal fade" id="deleteModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Ban co chac chan muon xoa mon hoc nay.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Xac nhan</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
 
 <!--dang xuat-->
 <div class="container">
@@ -188,7 +244,7 @@
 
 </div>
 
-
+<script src="taokithi.js"></script>
 
 </body>
 </html>

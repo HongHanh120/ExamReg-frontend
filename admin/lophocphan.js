@@ -22,7 +22,8 @@ for(let i=0; i<danhsachlop.length; i++){
     cell2.innerHTML = danhsachlop[i].id_course;
     cell3.innerHTML = danhsachlop[i].course_name;
     cell4.innerHTML = danhsachlop[i].portal;
-    cell5.innerHTML = "<i class=\"far fa-edit\"></i>,<i class=\"fas fa-trash-alt\"></i>" ;
+    cell5.innerHTML = "<i class=\"far fa-edit\" type=\"button\"  data-toggle=\"modal\" data-target=\"#editModal\"></i>" +
+        ", <i class=\"fas fa-trash-alt\" type=\"button\"  data-toggle=\"modal\" data-target=\"#deleteModal\"></i>" ;
 
 }
 

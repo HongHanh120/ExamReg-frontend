@@ -26,7 +26,8 @@ for(let i=0; i<danhsachsinhvien.length; i++){
     cell3.innerHTML = danhsachsinhvien[i].student_name;
     cell4.innerHTML = danhsachsinhvien[i].datebirth;
     cell5.innerHTML = danhsachsinhvien[i].student_mail;
-    cell6.innerHTML = "<i class=\"far fa-edit\"></i>,<i class=\"fas fa-trash-alt\"></i>" ;
+    cell6.innerHTML = "<i class=\"far fa-edit\" type=\"button\"  data-toggle=\"modal\" data-target=\"#editModal\"></i>" +
+        ", <i class=\"fas fa-trash-alt\" type=\"button\"  data-toggle=\"modal\" data-target=\"#deleteModal\"></i>" ;
 
 }
 
