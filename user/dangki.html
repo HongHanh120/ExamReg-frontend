@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>trang admin</title>
+    <title>trang user</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -11,8 +11,9 @@
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
           integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-    <link rel="stylesheet" href="monhoc.css">
-    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="user.css">
+    <link rel="stylesheet" href="dangki.css">
+
 </head>
 <body>
 <!--thanh chuc nang tren dau-->
@@ -36,17 +37,15 @@
         </div>
         <ul >
 
-            <li><a href="monhoc.html"><i class="fas fa-book"></i>Mon hoc</a></li>
-            <li><a href="sinhvien.html"><i class="fas fa-user"></i>Sinh vien</a></li>
-            <li><a href="lophocphan.html"><i class="fas fa-book"></i>Lop hoc phan</a></li>
-            <li><a href="taokithi.html" ><i class="fas fa-folder"></i>Tao ki thi</a></li>
+            <li class="active"><a href="trangchu.html" ><i class="fas fa-home"></i>Trang chu</a></li>
+            <li><a href="dangki.html"  ><i class="fas fa-edit"></i>Dang ki mon hoc</a></li>
         </ul>
     </div>
 
 </div>
 <div class="container-fluid" id="quanlimonhoc">
     <div class="d-sm-flex align-items-center justify-content-between mb-4"style="font-size: 200%">
-        <p>Quản lý mon hoc</p>
+        <p>Dang Ki Ki Thi</p>
     </div>
     <div class="card shadow mb-3">
         <div class="card-body">
@@ -64,17 +63,20 @@
                         <label>Tim kiem</label>
                         <input type="search" class="form-control form-control-sm" placeholder="Nhập tên môn học">
                     </div>
-                    <div style="font-size: 120%; margin-top: 20px"><label >Danh sach mon hoc</label></div>
+                    <div style="font-size: 120%; margin-top: 20px"><label >Danh sach mon thi ban duoc phep dang ki.</label></div>
 
                 </div>
-                <table id="subTable" class="table table-bordered p-0 table-striped my-table"style="color: black; text-align:center;">
+                <table id="regisTable" class="table table-bordered p-0 table-striped my-table"style="color: black; text-align:center;">
                     <thead class="thead-dark">
                     <tr>
                         <th>Stt</th>
-                        <th>Mã học phần</th>
-                        <th>Tên học phần</th>
+                        <th>Mã mon</th>
+                        <th>Tên mon</th>
                         <th>TC</th>
-                        <th>Chinh sua, xoa</th>
+                        <th>Thoi gian thi</th>
+                        <th>Ngay</th>
+                        <th>Dia diem</th>
+                        <th>Dang ki</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -105,97 +107,14 @@
         </div>
         <div class="card-footer">
             <div class="float-right">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addsubjectModal" data-whatever="@mdo">Thêm môn</button>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal-confirm" data-whatever="@mdo">Xac nhan</button>
             </div>
         </div>
     </div>
 </div>
 
-<!--them mon hoc-->
-<div class="modal fade" id="addsubjectModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Them Mon Hoc</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                        <label for="codesubject" class="col-form-label">Ma Mon:</label>
-                        <input type="text" class="form-control" id="codesubject">
-                    </div>
-                    <div class="form-group">
-                        <label for="namesubject" class="col-form-label">Ten Hoc Phan:</label>
-                        <input type="text"  class="form-control" id="namesubject"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="message-text" class="col-form-label">Tin Chi:</label>
-                        <input type="text" class="form-control" id="message-text"></textarea>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Them Mon</button>
-            </div>
-        </div>
-    </div>
-</div>
-<!--chinh sua thong tin-->
-<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                        <label for="fixcodesubject" class="col-form-label">Ma Mon:</label>
-                        <input type="text" class="form-control" id="fixcodesubject">
-                    </div>
-                    <div class="form-group">
-                        <label for="fixnamesubject" class="col-form-label">Ten Hoc Phan:</label>
-                        <input type="text"  class="form-control" id="fixnamesubject"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="fixportal" class="col-form-label">Tin Chi:</label>
-                        <input type="text" class="form-control" id="fixportal"></textarea>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Xac nhan</button>
-            </div>
-        </div>
-    </div>
-</div>
-<!--xac nhan xoa-->
-<div class="container">
-    <div class="modal fade" id="deleteModal" role="dialog">
-        <div class="modal-dialog">
 
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <p>Ban co chac chan muon xoa mon hoc nay.</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Xac nhan</button>
-                </div>
-            </div>
 
-        </div>
-    </div>
-
-</div>
 <!--dang xuat-->
 <div class="container">
     <div class="modal fade" id="myModal" role="dialog">
@@ -244,5 +163,5 @@
 
 
 </body>
-<script src="./monhoc.js"></script>
+<script src="dangki.js"></script>
 </html>
