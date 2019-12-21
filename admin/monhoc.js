@@ -1,7 +1,8 @@
 function myslide() {
     document.getElementById("slidebar").classList.toggle('active');
 }
-let danhsach = [{
+let danhsach = [
+    {
     id_course: "int3302",
     course_name: "Phat trien ung dung web",
     portal:"3"
@@ -9,7 +10,26 @@ let danhsach = [{
     id_course: "int3303",
     course_name: "Thiet ke giao dien",
     portal:"3"
-}];
+},
+    {
+        id_course: "int3302",
+        course_name: "Phat trien ung dung web",
+        portal:"3"
+    },{
+        id_course: "int3303",
+        course_name: "Thiet ke giao dien",
+        portal:"3"
+    },
+    {
+        id_course: "int3302",
+        course_name: "Phat trien ung dung web",
+        portal:"3"
+    },{
+        id_course: "int3303",
+        course_name: "Thiet ke giao dien",
+        portal:"3"
+    }
+];
 addmoreRows()
 
 function addmoreRows() {
@@ -19,9 +39,7 @@ function addmoreRows() {
         '</tr>');
 
 }
-function clickme() {
-    console.log("No click")
-}
+
 
 
 
