@@ -57,9 +57,9 @@
                     <div class="form-group">
                         <label>Hien thi</label>
                         <select class="custom-select custom-select-sm form-control form-control-sm">
-                            <option>10</option>
-                            <option>15</option>
-                            <option>20</option>
+                            <option value="10">10</option>
+                            <option value="15">15</option>
+                            <option value="20">20</option>
                         </select>
                     </div>
                     <div class="form-group" id="timmonhoc">
@@ -82,27 +82,32 @@
                     <tbody>
                     </tbody>
                 </table>
-                <div class="row w-100 m-0 mt-3">
-                    <div class="col-sm-12 col-md-5">
-                        <p id="subTable_info"></p>
-                    </div>
-                    <div class="col-sm-12 col-md-7 d-flex justify-content-end p-0">
-                        <div class="dataTables_paginate paging_simple_numbers" id="subTable_paginate">
-                            <ul class="pagination m-0">
-                                <li class="paginate_button page-item previous disabled" id="subTable_previous"onclick="previousPage()">
-                                    <a class="page-link">
-                                        <i class="fas fa-angle-double-left clickable"></i>
-                                    </a>
-                                </li>
-                                <li class="paginate_button page-item next disabled" id="subTable_next"onclick="nexPage()">
-                                    <a class="page-link" >
-                                        <i class="fas fa-angle-double-right clickable"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                <div class="pagination-container">
+                    <nav>
+                        <ul class="pagination"></ul>
+                    </nav>
                 </div>
+<!--                <div class="row w-100 m-0 mt-3">-->
+<!--                    <div class="col-sm-12 col-md-5">-->
+<!--                        <p id="subTable_info"></p>-->
+<!--                    </div>-->
+<!--                    <div class="col-sm-12 col-md-7 d-flex justify-content-end p-0">-->
+<!--                        <div class="dataTables_paginate paging_simple_numbers" id="subTable_paginate">-->
+<!--                            <ul class="pagination m-0">-->
+<!--                                <li class="paginate_button page-item previous disabled" id="subTable_previous"onclick="previousPage()">-->
+<!--                                    <a class="page-link">-->
+<!--                                        <i class="fas fa-angle-double-left clickable"></i>-->
+<!--                                    </a>-->
+<!--                                </li>-->
+<!--                                <li class="paginate_button page-item next disabled" id="subTable_next"onclick="nexPage()">-->
+<!--                                    <a class="page-link" >-->
+<!--                                        <i class="fas fa-angle-double-right clickable"></i>-->
+<!--                                    </a>-->
+<!--                                </li>-->
+<!--                            </ul>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
             </div>
         </div>
         <div class="card-footer">

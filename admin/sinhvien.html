@@ -9,9 +9,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
           integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
     <link rel="stylesheet" href="monhoc.css">
     <link rel="stylesheet" href="admin.css">
 
@@ -108,7 +109,11 @@
         </div>
         <div class="card-footer">
             <div class="float-right">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addsubjectModal" data-whatever="@mdo">Thêm sinh vien</button>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addsubjectModal"  style="float: right">Thêm sinh vien</button>
+
+            </div>
+            <div >
+                <button class="btn btn-outline-primary" id="importButton" data-toggle="modal" data-target="#importModal">Nhập</button>
             </div>
         </div>
     </div>
@@ -146,6 +151,27 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary">Them sinh vien</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--nhap file sinh vien-->
+<div class="modal fade" id="importModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Thêm danh sách sinh viên</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="custom-file">
+                        <input type="file" class="form-control" id="customFile">
+                    </div>
+                    <button class="btn btn-primary float-right" id="confirmImportModal" type="button" style="margin-top: 1rem">Ghi nhận</button>
+                </form>
             </div>
         </div>
     </div>
