@@ -16,7 +16,7 @@ $('#submit_insert').on('click',function () {
     createExam()
 })
 
-async function createExam(nameExam) {
+async function createExam() {
     console.log(document.getElementById("namesubject").value);
     axios.post('http://localhost:5000/api/v1/examinations', {
             name: document.getElementById("namesubject").value
@@ -55,7 +55,7 @@ async function crete() { //login vao app
                 var stt=1;
                 response.data.data.exams[0].forEach(element =>
                     {
-                        $('#mainTable > tbody:last-child').append('<tr><td>'+stt+'</td><td>'+element.name+'</td><td class="hideclass">'+element.id+'<td><i class="far fa-edit" type="button"  data-toggle="modal" data-target="#editModal"></i><i class="fas fa-trash-alt" type="button"  data-toggle="modal" data-target="#deleteModal"></i></td></tr>');
+                        $('#mainTable > tbody:last-child').append('<tr><td>'+stt+'</td><td>'+element.name+'</td><td class="hideclass">'+element.id+'<td><i onclick="setidtostorage('+element.id+')" class="far fa-edit" type="button"  data-toggle="modal" data-target="#editModal"></i><i onclick="setidtostorage('+element.id+')" class="fas fa-trash-alt" type="button"  data-toggle="modal" data-target="#deleteModal"></i></td></tr>');
                         stt++;
 
                     }
@@ -63,6 +63,7 @@ async function crete() { //login vao app
 
                 )
                 khoitao()
+
 
             }
             else {
@@ -79,3 +80,73 @@ async function crete() { //login vao app
 
 
 
+function setidtostorage(id) {
+
+    console.log(name);
+    document.getElementById("fixnamesubject").value=name;
+    window.localStorage.setItem('tempId',id);
+}
+
+$('#submitfixname').on('click',function () {
+    updateExam()
+})
+
+async function updateExam() {
+
+    axios.put('http://localhost:5000/api/v1/examinations', {
+            id:window.localStorage.getItem('tempId'),
+            name: document.getElementById("fixnamesubject").value
+        },
+        {
+            headers: {
+                'token': window.localStorage.getItem('token')
+            }
+        }
+    )
+        .then(function (response) {
+            if (response.data.success===true) {
+                alert("sửa thanh cong");
+                location.reload();
+            }
+            else {
+                console.log(response.data);
+
+            }
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+}
+
+
+
+
+$('#confirmDel').on('click',function () {
+    deleteExam()
+})
+async function deleteExam() {
+
+    axios.delete('http://localhost:5000/api/v1/examinations', {
+            id:window.localStorage.getItem('tempId')
+
+        },
+        {
+            headers: {
+                'token': window.localStorage.getItem('token')
+            }
+        }
+    )
+        .then(function (response) {
+            if (response.data.success===true) {
+                alert("x thanh cong");
+                location.reload();
+            }
+            else {
+                console.log(response.data);
+
+            }
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+}
