@@ -1,11 +1,22 @@
 #nguoidung{
+    background-color: #cadcd9;
     float: right;
-    width: 83%;
+    width: 85%;
     padding-top: 60px;
     color: grey;
 }
+.card-body{
+    border-radius: 5px;
+    background-color: white;
+    padding-top: 10px;
+    margin-bottom: 10px;
+}
 #timmonhoc{
     float: right;
+}
+thead{
+    background-color: #b3d7ff;
+
 }
 th{
     text-align: center;
