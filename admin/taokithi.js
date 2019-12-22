@@ -7,41 +7,7 @@ function myslide() {
 console.log('asdasdasd thang ')
 
 crete();
-
-
-
-
-//tao ki thi moi
-$('#submit_insert').on('click',function () {
-    createExam()
-})
-
-async function createExam() {
-    console.log(document.getElementById("namesubject").value);
-    axios.post('http://localhost:5000/api/v1/examinations', {
-            name: document.getElementById("namesubject").value
-        },
-        {
-            headers: {
-                'token': window.localStorage.getItem('token')
-            }
-        }
-    )
-        .then(function (response) {
-            if (response.data.success===true) {
-                alert("them thanh cong");
-                location.reload();
-            }
-            else {
-                console.log(response.data);
-
-            }
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
-}
-async function crete() { //login vao app
+async function crete() { // Khoi
     $('#mainTable tbody').html("");
     axios.get('http://localhost:5000/api/v1/examinations/',
         {
@@ -77,15 +43,78 @@ async function crete() { //login vao app
 
 }
 
+//-----------------------------------
+
+//tao ki thi moi
+$('#submit_insert').on('click',function () {
+    console.log("create exam")
+    createExam()
+})
+
+async function createExam() {
+    console.log(document.getElementById("namesubject").value);
+    axios.post('http://localhost:5000/api/v1/examinations', {
+            name: document.getElementById("namesubject").value
+        },
+        {
+            headers: {
+                'token': window.localStorage.getItem('token')
+            }
+        }
+    )
+        .then(function (response) {
+            if (response.data.success===true) {
+                alert("them thanh cong");
+                location.reload();
+            }
+            else {
+                console.log(response.data);
+
+            }
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+}
+
+
 
 
 
 function setidtostorage(id) {
-
-    console.log(name);
+    getExaminfo();
     document.getElementById("fixnamesubject").value=name;
     window.localStorage.setItem('tempId',id);
 }
+
+
+async function getExaminfo(){
+    let temp=parseInt(window.localStorage.getItem('tempId'));
+    axios.get('http://localhost:5000/api/v1/examinations/information?id='+temp,
+        {
+            headers: {
+                token: window.localStorage.getItem('token')
+            },
+
+        }
+    )
+        .then(function (response) {
+            if (response.data.success===true) {
+                console.log(response.data.data.rows.name)
+                document.getElementById('fixnamesubject').value=response.data.data.rows.name;
+            }
+            else {
+                console.log(response);
+
+            }
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+}
+
+
+
 
 $('#submitfixname').on('click',function () {
     updateExam()
@@ -121,12 +150,24 @@ async function updateExam() {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+//Xoa mon
 $('#confirmDel').on('click',function () {
     deleteExam()
 })
 async function deleteExam() {
 
-    axios.delete('http://localhost:5000/api/v1/examinations', {
+    axios.put('http://localhost:5000/api/v1/examinations', {
             id:window.localStorage.getItem('tempId')
 
         },
@@ -138,15 +179,19 @@ async function deleteExam() {
     )
         .then(function (response) {
             if (response.data.success===true) {
-                alert("x thanh cong");
+                alert("xoá thà nh cong");
                 location.reload();
             }
             else {
-                console.log(response.data);
-
+                console.log(response.data.reason);
+                alert(response.data.reason)
             }
         })
         .catch(function (error) {
             console.log(error);
         });
 }
+
+
+
+

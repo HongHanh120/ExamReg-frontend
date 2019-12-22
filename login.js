@@ -21,7 +21,7 @@ async function login() { //login vao app
             }
             else {
                 console.log(response.data.reason);
-
+                alert('sai ten dang nhap hoac mat khau');
             }
         })
         .catch(function (error) {
