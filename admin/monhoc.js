@@ -1,42 +1,39 @@
 function myslide() {
     document.getElementById("slidebar").classList.toggle('active');
 }
-let danhsach = [
-    {
-    id_course: "int3302",
-    course_name: "Phat trien ung dung web",
-    portal:"3"
-},{
-    id_course: "int3303",
-    course_name: "Thiet ke giao dien",
-    portal:"3"
-},
-    {
-        id_course: "int3302",
-        course_name: "Phat trien ung dung web",
-        portal:"3"
-    },{
-        id_course: "int3303",
-        course_name: "Thiet ke giao dien",
-        portal:"3"
-    },
-    {
-        id_course: "int3302",
-        course_name: "Phat trien ung dung web",
-        portal:"3"
-    },{
-        id_course: "int3303",
-        course_name: "Thiet ke giao dien",
-        portal:"3"
-    }
-];
-addmoreRows()
+crete()
+async function crete() { //login vao app
+    $('#mainTable tbody').html("");
+    axios.get('http://localhost:5000/api/v1/subjects/',
+        {
+            headers: {
+                'token': window.localStorage.getItem('token')
+            }
+        }
+    )
+        .then(function (response) {
+            if (response.data.success===true) {
+                var stt=1;
 
-function addmoreRows() {
-    $('#subTable > tbody:last-child').append('<tr class="subRow"><td>my data</td><td>more data</td><td>more data</td><td>more data</td>' +
-        '<td><i class=\"far fa-edit\" type=\"button\"  data-toggle=\"modal\" data-target=\"#editModal\"></i>' +
-        ' <i class=\"fas fa-trash-alt\" type=\"button\"  data-toggle=\"modal\" data-target=\"#deleteModal\"></i></td>' +
-        '</tr>');
+                response.data.data.subjects.forEach(element =>
+                    {
+                        $('#mainTable > tbody:last-child').append('<tr><td>'+stt+'</td><td>'+element.subject_code+'</td><td>'+element.name+'</td><td>'+element.credit+'</td></tr>');
+                        stt++;
+
+                    }
+
+                )
+                khoitao()
+
+            }
+            else {
+                console.log(response);
+
+            }
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
 
 }
 
