@@ -139,7 +139,7 @@ async function updateExam() {
             }
             else {
                 console.log(response.data);
-
+                alert(response.data.reason)
             }
         })
         .catch(function (error) {
