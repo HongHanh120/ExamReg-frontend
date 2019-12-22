@@ -18,31 +18,27 @@
 <!--thanh chuc nang tren dau-->
 <div class="toolbar">
     <div class="drop_from_user">
-        <button class="dropbtn">Ninh Hong Diep
+        <button class="dropbtn">Ninh Hồng Diệp
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-content">
-            <a href="#">Thong tin ca nhan</a>
-            <a href="#" id="logOut" type="button"  data-toggle="modal" data-target="#myModal">Dang xuat</a>
+            <a href="#">Thông tin cá nhân</a>
+            <a href="#" id="logOut" type="button"  data-toggle="modal" data-target="#myModal">Đăng xuất</a>
         </div>
     </div>
-    <!--menu-->
-
-    <div id="slidebar">
-        <div class="toggler" onclick="myslide()">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <ul >
-            <li><a href="dangki.html"  ><i class="fas fa-edit"></i>Dang ki Thi</a></li>
-            <li class="active"><a href="trangchu.html" ><i class="fas fa-home"></i>In Dang Ki Thi</a></li>
-        </ul>
-    </div>
-
+    <p id="tieude">Trang User</p>
 </div>
-<div id="demo">
-
+<div id="slidebar">
+    <!--        <div class="toggler" onclick="myslide()">-->
+    <!--            <span></span>-->
+    <!--            <span></span>-->
+    <!--            <span></span>-->
+    <!--        </div>-->
+    <ul >
+        <li><a href="trangchu.html"><i class="fas fa-home"></i>Trang chủ</a></li>
+        <li><a href="dangki.html"  ><i class="fas fa-edit"></i>Đăng kí thi</a></li>
+        <li><a href="indangki.html" ><i class="fas fa-print"></i>In đăng kí thi</a></li>
+    </ul>
 </div>
 
 
@@ -60,10 +56,10 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <p>Ban co chac chan muon dang xuat.</p>
+                    <p>Bạn có chắc chắn muốn đăng xuất.</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Dang xuat</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Đăng xuất</button>
                 </div>
             </div>
 
@@ -81,10 +77,10 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <p>Ban co chac chan muon dang ki du thi.</p>
+                    <p>Bạn có chắc chắn muốn đăng kí dự thi.</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Xac nhan</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Xác nhận</button>
                 </div>
             </div>
 

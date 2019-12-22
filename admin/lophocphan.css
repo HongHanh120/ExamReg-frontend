@@ -1,7 +1,12 @@
-#quanlimonhoc{
+#quanli{
+    float: right;
+    width: 83%;
     padding-top: 60px;
     color: grey;
 }
 #timmonhoc{
     float: right;
+}
+th{
+    text-align: center;
 }

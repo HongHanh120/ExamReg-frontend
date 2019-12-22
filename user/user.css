@@ -8,8 +8,9 @@
     height: 100%;
     position: fixed;
     background-color: #005cbf;
-    left: -200px;
-    transition: all 500ms linear;
+    /*left: -200px;*/
+    /*transition: all 500ms linear;*/
+    margin-top: 50px;
 }
 
 #slidebar ul li a {
@@ -28,13 +29,13 @@
     left: 230px;
     top: 10px;
 }
-#slidebar .toggler span{
-    width: 20px;
-    height: 3px;
-    background-color:white;
-    display: block;
-    margin: 5px 0px;
-}
+/*#slidebar .toggler span{*/
+/*    width: 20px;*/
+/*    height: 3px;*/
+/*    background-color:white;*/
+/*    display: block;*/
+/*    margin: 5px 0px;*/
+/*}*/
 #slidebar.active{
     left: 0px;
 }
@@ -59,6 +60,12 @@
     background-color: #b3d7ff;
 }
 /*Chinh toolbar*/
+#tieude{
+    font-size: 220%;
+    padding-left: 5px;
+    font-weight: bold;
+    color: white;
+}
 .toolbar{
     position: fixed;
     width: 100%;

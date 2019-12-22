@@ -19,40 +19,38 @@
 <!--thanh chuc nang tren dau-->
 <div class="toolbar">
     <div class="drop_from_user">
-        <button class="dropbtn">Ninh Hong Diep
+        <button class="dropbtn">Ninh Hồng Diệp
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-content">
-            <a href="#">Thong tin ca nhan</a>
-            <a href="#" id="logOut" type="button"  data-toggle="modal" data-target="#myModal">Dang xuat</a>
+            <a href="#">Thông tin cá nhân</a>
+            <a href="#" id="logOut" type="button"  data-toggle="modal" data-target="#myModal">Đăng xuất</a>
         </div>
     </div>
-    <!--menu-->
-
-    <div id="slidebar">
-        <div class="toggler" onclick="myslide()">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <ul >
-
-            <li><a href="dangki.html"  ><i class="fas fa-edit"></i>Dang ki Thi</a></li>
-            <li class="active"><a href="trangchu.html" ><i class="fas fa-home"></i>In Dang Ki Thi</a></li>
-        </ul>
-    </div>
-
+    <p id="tieude">Trang User</p>
 </div>
-<div class="container-fluid" id="quanlimonhoc">
+<div id="slidebar">
+    <!--        <div class="toggler" onclick="myslide()">-->
+    <!--            <span></span>-->
+    <!--            <span></span>-->
+    <!--            <span></span>-->
+    <!--        </div>-->
+    <ul >
+        <li><a href="trangchu.html"><i class="fas fa-home"></i>Trang chủ</a></li>
+        <li><a href="dangki.html"  ><i class="fas fa-edit"></i>Đăng kí thi</a></li>
+        <li><a href="indangki.html" ><i class="fas fa-print"></i>In đăng kí thi</a></li>
+    </ul>
+</div>
+<div class="container-fluid" id="nguoidung">
     <div class="d-sm-flex align-items-center justify-content-between mb-4"style="font-size: 200%">
-        <p>Dang Ki Ki Thi</p>
+        <p>Đăng kí thi</p>
     </div>
     <div class="card shadow mb-3">
         <div class="card-body">
             <div class="container-fluid p-0 table-responsive">
                 <div class="form-inline">
                     <div class="form-group">
-                        <label>Hien thi</label>
+                        <label>Hiển thị</label>
                         <select id="maxRows" class="custom-select custom-select-sm form-control form-control-sm">
                             <option value="10">10</option>
                             <option value="15">15</option>
@@ -60,23 +58,23 @@
                         </select>
                     </div>
                     <div class="form-group" id="timmonhoc">
-                        <label>Tim kiem</label>
+                        <label>Tìm kiếm:</label>
                         <input type="search" class="form-control form-control-sm" placeholder="Nhập tên môn học">
                     </div>
-                    <div style="font-size: 120%; margin-top: 20px"><label >Danh sach mon thi ban duoc phep dang ki.</label></div>
+                    <div style="font-size: 120%; margin-top: 20px"><label >Danh sách môn học bạn được phép đăng kí thi.</label></div>
 
                 </div>
                 <table id="mainTable" class="table table-bordered p-0 table-striped my-table"style="color: black; text-align:center;">
                     <thead class="thead-dark">
                     <tr>
                         <th>Stt</th>
-                        <th>Mã mon</th>
-                        <th>Tên mon</th>
+                        <th>Mã môn</th>
+                        <th>Tên môn</th>
                         <th>TC</th>
-                        <th>Thoi gian thi</th>
-                        <th>Ngay</th>
-                        <th>Dia diem</th>
-                        <th>Dang ki</th>
+                        <th>Thời gian thi</th>
+                        <th>Ngày</th>
+                        <th>Địa điểm</th>
+                        <th>Đăng kí</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -293,7 +291,7 @@
         </div>
         <div class="card-footer">
             <div class="float-right">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal-confirm" data-whatever="@mdo">Xac nhan</button>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal-confirm"  >Xác nhận</button>
             </div>
         </div>
     </div>
@@ -312,10 +310,10 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <p>Ban co chac chan muon dang xuat.</p>
+                    <p>Bạn có chắc chắn muốn đăng xuất.</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Dang xuat</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Đăng xuất</button>
                 </div>
             </div>
 
@@ -334,10 +332,10 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <p>Ban co chac chan muon dang ki du thi.</p>
+                    <p>Bạn có chắc chắn muốn đăng kí dự thi.</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Xac nhan</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Xác nhận</button>
                 </div>
             </div>
 

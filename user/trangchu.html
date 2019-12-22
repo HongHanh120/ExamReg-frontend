@@ -11,294 +11,48 @@
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
           integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <script src="user.js"></script>
     <link rel="stylesheet" href="user.css">
     <link rel="stylesheet" href="trangchu.css">
-    <link rel="stylesheet" href="selected_page.css">
 </head>
 <body>
 <!--thanh chuc nang tren dau-->
 <div class="toolbar">
     <div class="drop_from_user">
-        <button class="dropbtn">Ninh Hong Diep
+        <button class="dropbtn">Ninh Hồng Diệp
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-content">
-            <a href="#">Thong tin ca nhan</a>
-            <a href="#" id="logOut" type="button"  data-toggle="modal" data-target="#myModal">Dang xuat</a>
+            <a href="#">Thông tin cá nhân</a>
+            <a href="#" id="logOut" type="button"  data-toggle="modal" data-target="#myModal">Đăng xuất</a>
         </div>
     </div>
-    <!--menu-->
-
-    <div id="slidebar">
-        <div class="toggler" onclick="myslide()">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <ul >
-
-            <li><a href="dangki.html"  ><i class="fas fa-edit"></i>Dang ki Thi</a></li>
-            <li class="active"><a href="trangchu.html" ><i class="fas fa-home"></i>In Dang Ki Thi</a></li>
-        </ul>
-    </div>
-
+    <p id="tieude">Trang User</p>
 </div>
-<div class="container-fluid" id="quanlimonhoc">
+<div id="slidebar">
+    <!--        <div class="toggler" onclick="myslide()">-->
+    <!--            <span></span>-->
+    <!--            <span></span>-->
+    <!--            <span></span>-->
+    <!--        </div>-->
+    <ul >
+        <li><a href="trangchu.html"><i class="fas fa-home"></i>Trang chủ</a></li>
+        <li><a href="dangki.html"  ><i class="fas fa-edit"></i>Đăng kí thi</a></li>
+        <li><a href="indangki.html" ><i class="fas fa-print"></i>In đăng kí thi</a></li>
+    </ul>
+</div>
+<div class="container" id="nguoidung">
     <div class="d-sm-flex align-items-center justify-content-between mb-4"style="font-size: 200%">
-        <p>Thong Tin Ve Hoc Ki</p>
+        <p>Trang chủ</p>
     </div>
-    <div class="card shadow mb-3">
-        <div class="card-body">
-            <div class="container-fluid p-0 table-responsive">
-                <div class="form-inline">
-                    <div class="form-group">
-                        <label>Hien thi</label>
-                        <select id="maxRows" class="custom-select custom-select-sm form-control form-control-sm">
-                            <option value="10">10</option>
-                            <option value="15">15</option>
-                            <option value="20">20</option>
-                        </select>
-                    </div>
-                    <div class="form-group" id="timmonhoc">
-                        <label>Tim kiem</label>
-                        <input type="search" class="form-control form-control-sm" placeholder="Nhập tên môn học">
-                    </div>
-                    <div style="font-size: 120%; margin-top: 20px"><label >Danh sach mon hoc ban hoc trong ki.</label></div>
 
-                </div>
-                <table id="mainTable" class="table table-bordered p-0 table-striped my-table"style="color: black; text-align:center;">
-                    <thead class="thead-dark">
-                    <tr>
-                        <th>Stt</th>
-                        <th>Mã mon</th>
-                        <th>Tên mon</th>
-                        <th>TC</th>
-                        <th>Tiet</th>
-                        <th>Phong hoc</th>
-                        <th>Giang vien</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <th>Stt</th>
-                        <th>Mã mon</th>
-                        <th>Tên mon</th>
-                        <th>TC</th>
-                        <th>Tiet</th>
-                        <th>Phong hoc</th>
-                        <th>Giang vien</th>
-                    </tr>
-                    <tr>
-                        <th>Stt</th>
-                        <th>Mã mon</th>
-                        <th>Tên mon</th>
-                        <th>TC</th>
-                        <th>Tiet</th>
-                        <th>Phong hoc</th>
-                        <th>Giang vien</th>
-                    </tr>
-                    <tr>
-                        <th>Stt</th>
-                        <th>Mã mon</th>
-                        <th>Tên mon</th>
-                        <th>TC</th>
-                        <th>Tiet</th>
-                        <th>Phong hoc</th>
-                        <th>Giang vien</th>
-                    </tr><tr>
-                        <th>Stt</th>
-                        <th>Mã mon</th>
-                        <th>Tên mon</th>
-                        <th>TC</th>
-                        <th>Tiet</th>
-                        <th>Phong hoc</th>
-                        <th>Giang vien</th>
-                    </tr><tr>
-                        <th>Stt</th>
-                        <th>Mã mon</th>
-                        <th>Tên mon</th>
-                        <th>TC</th>
-                        <th>Tiet</th>
-                        <th>Phong hoc</th>
-                        <th>Giang vien</th>
-                    </tr><tr>
-                        <th>Stt</th>
-                        <th>Mã mon</th>
-                        <th>Tên mon</th>
-                        <th>TC</th>
-                        <th>Tiet</th>
-                        <th>Phong hoc</th>
-                        <th>Giang vien</th>
-                    </tr><tr>
-                        <th>Stt</th>
-                        <th>Mã mon</th>
-                        <th>Tên mon</th>
-                        <th>TC</th>
-                        <th>Tiet</th>
-                        <th>Phong hoc</th>
-                        <th>Giang vien</th>
-                    </tr><tr>
-                        <th>Stt</th>
-                        <th>Mã mon</th>
-                        <th>Tên mon</th>
-                        <th>TC</th>
-                        <th>Tiet</th>
-                        <th>Phong hoc</th>
-                        <th>Giang vien</th>
-                    </tr><tr>
-                        <th>Stt</th>
-                        <th>Mã mon</th>
-                        <th>Tên mon</th>
-                        <th>TC</th>
-                        <th>Tiet</th>
-                        <th>Phong hoc</th>
-                        <th>Giang vien</th>
-                    </tr><tr>
-                        <th>Stt</th>
-                        <th>Mã mon</th>
-                        <th>Tên mon</th>
-                        <th>TC</th>
-                        <th>Tiet</th>
-                        <th>Phong hoc</th>
-                        <th>Giang vien</th>
-                    </tr><tr>
-                        <th>Stt</th>
-                        <th>Mã mon</th>
-                        <th>Tên mon</th>
-                        <th>TC</th>
-                        <th>Tiet</th>
-                        <th>Phong hoc</th>
-                        <th>Giang vien</th>
-                    </tr><tr>
-                        <th>Stt</th>
-                        <th>Mã mon</th>
-                        <th>Tên mon</th>
-                        <th>TC</th>
-                        <th>Tiet</th>
-                        <th>Phong hoc</th>
-                        <th>Giang vien</th>
-                    </tr><tr>
-                        <th>Stt</th>
-                        <th>Mã mon</th>
-                        <th>Tên mon</th>
-                        <th>TC</th>
-                        <th>Tiet</th>
-                        <th>Phong hoc</th>
-                        <th>Giang vien</th>
-                    </tr><tr>
-                        <th>Stt</th>
-                        <th>Mã mon</th>
-                        <th>Tên mon</th>
-                        <th>TC</th>
-                        <th>Tiet</th>
-                        <th>Phong hoc</th>
-                        <th>Giang vien</th>
-                    </tr><tr>
-                        <th>Stt</th>
-                        <th>Mã mon</th>
-                        <th>Tên mon</th>
-                        <th>TC</th>
-                        <th>Tiet</th>
-                        <th>Phong hoc</th>
-                        <th>Giang vien</th>
-                    </tr><tr>
-                        <th>Stt</th>
-                        <th>Mã mon</th>
-                        <th>Tên mon</th>
-                        <th>TC</th>
-                        <th>Tiet</th>
-                        <th>Phong hoc</th>
-                        <th>Giang vien</th>
-                    </tr><tr>
-                        <th>Stt</th>
-                        <th>Mã mon</th>
-                        <th>Tên mon</th>
-                        <th>TC</th>
-                        <th>Tiet</th>
-                        <th>Phong hoc</th>
-                        <th>Giang vien</th>
-                    </tr><tr>
-                        <th>Stt</th>
-                        <th>Mã mon</th>
-                        <th>Tên mon</th>
-                        <th>TC</th>
-                        <th>Tiet</th>
-                        <th>Phong hoc</th>
-                        <th>Giang vien</th>
-                    </tr><tr>
-                        <th>Stt</th>
-                        <th>Mã mon</th>
-                        <th>Tên mon</th>
-                        <th>TC</th>
-                        <th>Tiet</th>
-                        <th>Phong hoc</th>
-                        <th>Giang vien</th>
-                    </tr><tr>
-                        <th>Stt</th>
-                        <th>Mã mon</th>
-                        <th>Tên mon</th>
-                        <th>TC</th>
-                        <th>Tiet</th>
-                        <th>Phong hoc</th>
-                        <th>Giang vien</th>
-                    </tr><tr>
-                        <th>Stt</th>
-                        <th>Mã mon</th>
-                        <th>Tên mon</th>
-                        <th>TC</th>
-                        <th>Tiet</th>
-                        <th>Phong hoc</th>
-                        <th>Giang vien</th>
-                    </tr><tr>
-                        <th>Stt</th>
-                        <th>Mã mon</th>
-                        <th>Tên mon</th>
-                        <th>TC</th>
-                        <th>Tiet</th>
-                        <th>Phong hoc</th>
-                        <th>Giang vien</th>
-                    </tr><tr>
-                        <th>Stt</th>
-                        <th>Mã mon</th>
-                        <th>Tên mon</th>
-                        <th>TC</th>
-                        <th>Tiet</th>
-                        <th>Phong hoc</th>
-                        <th>Giang vien</th>
-                    </tr><tr>
-                        <th>Stt</th>
-                        <th>Mã mon</th>
-                        <th>Tên mon</th>
-                        <th>TC</th>
-                        <th>Tiet</th>
-                        <th>Phong hoc</th>
-                        <th>Giang vien</th>
-                    </tr>
-                    </tbody>
-                </table>
-                <div class="row w-100 m-0 mt-3">
-                    <div class="col-sm-12 col-md-5">
-                        <p id="subTable_info"></p>
-                    </div>
-                    <div class="col-sm-12 col-md-7 d-flex justify-content-end p-0">
-                        <div class="dataTables_paginate paging_simple_numbers" id="subTable_paginate">
-                            <ul id="pagination" class="pagination">
-                                <li>
-                                    <ul id="listpagination" class="pagination">
-
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
 </div>
 
- <!--dang xuat-->
+
+
+
+
+<!--dang xuat-->
 <div class="container">
     <div class="modal fade" id="myModal" role="dialog">
         <div class="modal-dialog">
@@ -309,10 +63,31 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <p>Ban co chac chan muon dang xuat.</p>
+                    <p>Bạn có chắc chắn muốn đăng xuất.</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Dang xuat</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Đăng xuất</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--Xac nhan dang ki thi-->
+</div>
+<div class="container">
+    <div class="modal fade" id="myModal-confirm" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Bạn có chắc chắn muốn đăng kí dự thi.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Xác nhận</button>
                 </div>
             </div>
 
@@ -321,8 +96,6 @@
 
 </div>
 
+
 </body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="trangchu.js"></script>
-<script src="../js/pagiation.js"></script>
 </html>
