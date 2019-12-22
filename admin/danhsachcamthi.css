@@ -1,0 +1,28 @@
+#quanli{
+    background-color: #ecf0f5;
+    float: right;
+    width: 85%;
+    padding-top: 60px;
+    color: grey;
+}
+.card-body{
+    border-radius: 5px;
+    background-color: white;
+    padding-top: 10px;
+    margin-bottom: 10px;
+}
+#importButton{
+    border-color: #377bd1;
+    color: #377bd1;
+    background-color: white;
+}
+#timmonhoc{
+    float: right;
+}
+thead{
+    background-color: #b3d7ff;
+
+}
+th{
+    text-align: center;
+}
