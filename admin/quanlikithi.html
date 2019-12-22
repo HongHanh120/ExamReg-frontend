@@ -9,14 +9,13 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
           integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-
-
     <link rel="stylesheet" href="admin.css">
-    <link rel="stylesheet" href="danhsachcamthi.css">
 
+
+    <link rel="stylesheet" href="quanlikithi.css">
 
 </head>
 <body>
@@ -55,7 +54,7 @@
 </div>
 <div class="container-fluid" id="quanli">
     <div class="d-sm-flex align-items-center justify-content-between mb-4"style="font-size: 200%">
-        <p>Danh sách cấm thi</p>
+        <p>Quản lí kì thi</p>
     </div>
     <div class="card shadow mb-3">
         <div class="card-body">
@@ -70,21 +69,20 @@
                         </select>
                     </div>
                     <div class="form-group" id="timmonhoc">
-                        <label>Tìm kiếm</label>
-                        <input type="search" class="form-control form-control-sm" placeholder="Nhập MSSV">
+                        <label>Tìm kiếm:</label>
+                        <input type="search" class="form-control form-control-sm" placeholder="Nhập tên kì thi">
                     </div>
-                    <div style="font-size: 120%; margin-top: 20px"><label >Danh sách sinh viên bị cấm thi trong học kì.</label></div>
+                    <div style="font-size: 120%; margin-top: 20px"><label >Danh sách các kì thi đã tạo</label></div>
 
                 </div>
                 <table id="mainTable" class="table table-bordered p-0 table-striped my-table"style="color: black; text-align:center;">
                     <thead class="thead-dark">
                     <tr>
                         <th>Stt</th>
-                        <th>MSSV</th>
-                        <th>Họ tên</th>
-                        <th>Ngày sinh</th>
-                        <th>Email</th>
-                        <th>Chỉnh sửa,xóa</th>
+                        <th>Mã kì thi</th>
+                        <th>Tên Kỳ thi</th>
+                        <th>Thời gian</th>
+                        <th>Chỉnh sửa, xóa</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -301,11 +299,7 @@
         </div>
         <div class="card-footer">
             <div class="float-right">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addsubjectModal"  style="float: right">Thêm sinh viên</button>
-
-            </div>
-            <div >
-                <button class="btn btn-outline-primary" id="importButton" data-toggle="modal" data-target="#importModal">Nhập</button>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addsubjectModal" style="float: right">Thêm kì thi</button>
             </div>
         </div>
     </div>
@@ -316,7 +310,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Thêm sinh viên</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Thêm kì thi</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -324,50 +318,28 @@
             <div class="modal-body">
                 <form>
                     <div class="form-group">
-                        <label for="choosefile" class="col-form-label">Chọn từ tệp:</label>
-                        <input type="file" class="form-control" id="choosefile">
+                        <label for="codesubject" class="col-form-label">Mã kì thi:</label>
+                        <input type="text" class="form-control" id="codesubject">
                     </div>
                     <div class="form-group">
-                        <label for="codestudent" class="col-form-label">MSSV:</label>
-                        <input type="text" class="form-control" id="codestudent">
+                        <label for="namesubject" class="col-form-label">Tên kì thi:</label>
+                        <select id="namesubject" class="custom-select custom-select-sm form-control form-control-sm">
+                            <option>Học kì I năm 2019-2020</option>
+                            <option>Học kì II năm 2019-2020</option>
+                        </select>
                     </div>
                     <div class="form-group">
-                        <label for="namestudent" class="col-form-label">Họ và tên:</label>
-                        <input type="text"  class="form-control" id="namestudent"></textarea>
+                        <label for="dateterm" class="col-form-label">Ngày thi:</label>
+                        <input type="date" class="form-control" id="dateterm"></textarea>
                     </div>
                     <div class="form-group">
-                        <label for="datebirth" class="col-form-label">Ngày sinh:</label>
-                        <input type="text" class="form-control" id="datebirth"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="email" class="col-form-label">Email:</label>
-                        <input type="text" class="form-control" id="email"></textarea>
+                        <label for="timeterm" class="col-form-label">Thời gian:</label>
+                        <input type="time" class="form-control" id="timeterm"></textarea>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Thêm sinh viên</button>
-            </div>
-        </div>
-    </div>
-</div>
-<!--nhap file sinh vien-->
-<div class="modal fade" id="importModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Thêm danh sách sinh viên</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="custom-file">
-                        <input type="file" class="form-control" id="customFile">
-                    </div>
-                    <button class="btn btn-primary float-right" id="confirmImportModal" type="button" style="margin-top: 1rem">Ghi nhận</button>
-                </form>
+                <button type="button" class="btn btn-primary">Thêm kì thi</button>
             </div>
         </div>
     </div>
@@ -384,20 +356,16 @@
             <div class="modal-body">
                 <form>
                     <div class="form-group">
-                        <label for="fixcodestudent" class="col-form-label">Mã sinh viên:</label>
-                        <input type="text" class="form-control" id="fixcodestudent">
+                        <label for="fixcodesubject" class="col-form-label">Mã kì thi:</label>
+                        <input type="text" class="form-control" id="fixcodesubject">
                     </div>
                     <div class="form-group">
-                        <label for="fixnamestudent" class="col-form-label">Họ tên:</label>
-                        <input type="text"  class="form-control" id="fixnamestudent"></textarea>
+                        <label for="fixnamesubject" class="col-form-label">Tên kì thi:</label>
+                        <input type="text"  class="form-control" id="fixnamesubject"></textarea>
                     </div>
                     <div class="form-group">
-                        <label for="fixdatebirth" class="col-form-label">Ngày sinh:</label>
-                        <input type="text" class="form-control" id="fixdatebirth"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="fixemail" class="col-form-label">Email:</label>
-                        <input type="text" class="form-control" id="fixemail"></textarea>
+                        <label for="fixportal" class="col-form-label">Thời gian:</label>
+                        <input type="text" class="form-control" id="fixportal"></textarea>
                     </div>
                 </form>
             </div>
@@ -418,7 +386,7 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <p>Bạn có chắc chắn xóa sinh viên này.</p>
+                    <p>Bạn có chắc chắn xóa kì thi này.</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Xác nhận</button>
@@ -429,6 +397,7 @@
     </div>
 
 </div>
+
 
 <!--dang xuat-->
 <div class="container">
@@ -453,8 +422,8 @@
 
 </div>
 
-<script src="sinhvien.js"></script>
 <script src="../js/pagiation.js"></script>
+<script src="quanlikithi.js"></script>
 
 </body>
 </html>
