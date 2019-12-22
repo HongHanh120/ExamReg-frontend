@@ -60,10 +60,14 @@
                 <div class="form-inline">
                     <div class="form-group">
                         <label>Hiển thị</label>
-                        <select class="custom-select custom-select-sm form-control form-control-sm">
+                        <select id="maxRows" class="custom-select custom-select-sm form-control form-control-sm">
                             <option value="10">10</option>
                             <option value="15">15</option>
                             <option value="20">20</option>
+                        </select>
+
+                        <select id="selectExam" class="custom-select custom-select-sm form-control form-control-sm">
+
                         </select>
                     </div>
                     <div class="form-group" id="timmonhoc">
@@ -294,7 +298,7 @@
         </div>
         <div class="card-footer">
             <div class="float-right">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addsubjectModal" style="float: right">Thêm lớp</button>
+                <button type="button" id="btnInsertClass" class="btn btn-primary" data-toggle="modal" data-target="#addsubjectModal" style="float: right">Thêm lớp</button>
             </div>
             <div >
                 <button class="btn btn-outline-primary" id="importButton" data-toggle="modal" data-target="#importModal">Nhập</button>
@@ -329,33 +333,28 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Thêm học phần </h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button  type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <form>
                     <div class="form-group">
-                        <label for="choosefile" class="col-form-label">Chọn từ tệp:</label>
-                        <input type="file" class="form-control" id="choosefile">
-                    </div>
-                    <div class="form-group">
-                        <label for="codesubject" class="col-form-label">Mã học phần:</label>
-                        <input type="text" class="form-control" id="codesubject">
+                        <label for="classcode" class="col-form-label">Mã học phần:</label>
+                        <input type="text" class="form-control" id="classcode">
                     </div>
 
                     <div class="form-group">
-                        <label for="namesubject" class="col-form-label">Tên học phần:</label>
-                        <input type="text"  class="form-control" id="namesubject"></textarea>
+                        <label for="codesubject" class="col-form-label">Tên học phần:</label>
+                        <select id="codesubject" class="custom-select custom-select-sm form-control form-control-sm">
+
+                        </select>
                     </div>
-                    <div class="form-group">
-                        <label for="message-text" class="col-form-label">Tín chỉ:</label>
-                        <input type="text" class="form-control" id="message-text"></textarea>
-                    </div>
+
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Thêm học phần</button>
+                <button id="btnConfirmInsert" type="button" class="btn btn-primary">Thêm học phần</button>
             </div>
         </div>
     </div>
@@ -373,20 +372,16 @@
                 <form>
                     <div class="form-group">
                         <label for="fixcodesubject" class="col-form-label">Mã học phần:</label>
-                        <input type="text" class="form-control" id="fixcodesubject">
+                        <input id="classcode2"  type="text" class="form-control" id="fixcodesubject">
                     </div>
-                    <div class="form-group">
-                        <label for="fixnamesubject" class="col-form-label">Tên học phần:</label>
-                        <input type="text"  class="form-control" id="fixnamesubject"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="fixportal" class="col-form-label">Tín chỉ:</label>
-                        <input type="text" class="form-control" id="fixportal"></textarea>
-                    </div>
+                    <select id="codesubject2" class="custom-select custom-select-sm form-control form-control-sm">
+
+                    </select>
+
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Xác nhận</button>
+                <button id="confirmFix" type="button" class="btn btn-primary">Xác nhận</button>
             </div>
         </div>
     </div>
@@ -405,7 +400,7 @@
                     <p>Bạn có chắc chắn muốn xóa lớp học phần này.</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Xác nhận</button>
+                    <button id="confirmDel" type="button" class="btn btn-default" data-dismiss="modal">Xác nhận</button>
                 </div>
             </div>
 
@@ -427,7 +422,7 @@
                     <p>Bạn có chắc chắn muốn đăng xuất.</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Đăng xuất</button>
+                    <button  type="button" class="btn btn-default" data-dismiss="modal">Đăng xuất</button>
                 </div>
             </div>
 

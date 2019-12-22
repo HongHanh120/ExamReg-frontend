@@ -4,7 +4,7 @@ function myslide() {
 crete()
 async function crete() { //login vao app
     $('#mainTable tbody').html("");
-    axios.get('http://localhost:5000/api/v1/accounts/student',
+    axios.get('http://localhost:5000/api/v1/students',
         {
             headers: {
                 'token': window.localStorage.getItem('token')
@@ -42,7 +42,6 @@ async function crete() { //login vao app
 
 
 $('#confirmImportModal').on('click',function (e) {
-    console.log(document.getElementById('customFile').files[0])
     uploadfile()
 })
 

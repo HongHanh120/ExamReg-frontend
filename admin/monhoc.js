@@ -92,12 +92,8 @@ $('#confirmDel').on('click',function () {
 })
 
 async function deleteSubject() {
-
-    axios.put('http://localhost:5000/api/v1/subjects/', {
-            subject_code:document.getElementById("fixcodesubject").value,
-            name: document.getElementById("fixnamesubject").value,
-            credit: document.getElementById("fixportal").value
-        },
+    let subcode=window.localStorage.getItem('tempId')
+    axios.delete('http://localhost:5000/api/v1/subjects/?subject_code='+subcode,
         {
             headers: {
                 'token': window.localStorage.getItem('token')
@@ -106,7 +102,7 @@ async function deleteSubject() {
     )
         .then(function (response) {
             if (response.data.success===true) {
-                alert("sửa thanh cong");
+                alert("xoa thanh cong");
                 location.reload();
             }
             else {
@@ -120,6 +116,50 @@ async function deleteSubject() {
 }
 
 
+
+
+
+
+$('#confirmImportModal').on('click',function (e) {
+    console.log(document.getElementById('customFile').files[0])
+    uploadfile()
+})
+
+
+async function uploadfile() { //login vao app
+    var formData=new FormData();
+    formData.append('subjects',document.getElementById('customFile').files[0]);
+    const config = {
+        headers: {
+            'token': window.localStorage.getItem('token'),
+            'content-type': 'application/x-www-form-urlencoded'
+        },
+        onUploadProgress: function(progressEvent) {
+            var percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total)
+            console.log(percentCompleted)
+        }
+    }
+    axios.post('http://localhost:5000/api/v1/subjects/import',
+        formData
+        ,
+        config
+    )
+        .then(function (response) {
+            if (response.data.success===true) {
+                alert('Them thanh cong')
+
+            }
+            else {
+                console.log(response.data.reason);
+                alert(response.data.reason+"file nhap vao khong dung")
+
+            }
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+
+}
 
 
 

@@ -166,11 +166,9 @@ $('#confirmDel').on('click',function () {
     deleteExam()
 })
 async function deleteExam() {
+    let idExam= window.localStorage.getItem('tempId')
 
-    axios.put('http://localhost:5000/api/v1/examinations', {
-            id:window.localStorage.getItem('tempId')
-
-        },
+    axios.delete('http://localhost:5000/api/v1/examinations/?id='+idExam,
         {
             headers: {
                 'token': window.localStorage.getItem('token')
@@ -179,11 +177,11 @@ async function deleteExam() {
     )
         .then(function (response) {
             if (response.data.success===true) {
-                alert("xoá thà nh cong");
+                alert("xoa thanh cong");
                 location.reload();
             }
             else {
-                console.log(response.data.reason);
+                console.log(response.data);
                 alert(response.data.reason)
             }
         })
@@ -191,6 +189,8 @@ async function deleteExam() {
             console.log(error);
         });
 }
+
+
 
 
 
