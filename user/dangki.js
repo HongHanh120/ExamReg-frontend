@@ -42,7 +42,7 @@ let danhsachmondangki = [{
 addmoreRows()
 
 function addmoreRows() {
-    $('#regisTable > tbody:last-child').append('<tr class="subRow"><td>1</td><td>INT33023</td><td>Phat trien ung dung web</td><td>3</td>' +
+    $('#mainTable > tbody:last-child').append('<tr class="subRow"><td>1</td><td>INT33023</td><td>Phat trien ung dung web</td><td>3</td>' +
         '<td> <select class="custom-select custom-select-sm form-control form-control-sm">\n' +
         '                            <option>10</option>\n' +
         '                            <option>15</option>\n' +
@@ -60,6 +60,14 @@ function addmoreRows() {
         '                        </select></td>'+
         '<td> <input type="checkbox"></td>' +
         '</tr>');
+    $('#regisTable > tbody:last-child').append('<tr class="subRow"> <th>1</th>\n' +
+        '                        <th>7</th>\n' +
+        '                        <th>Phát triển web</th>\n' +
+        '                        <th>3</th>\n' +
+        '                        <th>11-12</th>\n' +
+        '                        <th>301-G2</th>\n' +
+        '                        <th>Lê Đình Thanh</th>\n' +
+        '                        <th> <i class="fas fa-trash-alt"></i></th></tr>')
 
 }
 

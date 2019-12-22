@@ -30,8 +30,8 @@ let danhsachkithi = [{
 addmoreRows()
 
 function addmoreRows() {
-    $('#termTable > tbody:last-child').append('<tr class="subRow"><td>1</td><td>7013</td><td>thi cuoi ki web</td><td>8:00</td>' +
-        '<td><i class=\"far fa-edit\" type=\"button\"  data-toggle=\"modal\" data-target=\"#editModal\"></i>' +
+    $('#mainTable > tbody:last-child').append('<tr class="subRow"><td>1</td><td>7013</td><td>thi cuoi ki web</td><td>8:00</td>' +
+        '<td><i class=\"far fa-edit\" type=\"button\"  data-toggle=\"modal\" data-target=\"#editModal\"></i>' +'&'+
         ' <i class=\"fas fa-trash-alt\" type=\"button\"  data-toggle=\"modal\" data-target=\"#deleteModal\"></i></td>' +
         '</tr>');
 
