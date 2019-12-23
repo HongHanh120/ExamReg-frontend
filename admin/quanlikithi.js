@@ -304,12 +304,19 @@ async function deleteE() {
         });
 }
 
-function fixtable() {
-    var trnum=0;
-    let table='#mainTable';
-    $(table+' tr:gt(0)').each(function () {
-        trnum++
-        console.log($(this)[0].children[0])
+// function fixtable() {
+//     var trnum=0;
+//     let table='#mainTable';
+//     $(table+' tr:gt(0)').each(function () {
+//         trnum++
+//         console.log($(this)[0].children[0])
+//
+//     })
+// }
 
-    })
+
+
+
+function s() {
+
 }

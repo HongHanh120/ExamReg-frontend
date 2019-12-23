@@ -76,10 +76,10 @@ function getExamtoken() {
 
 
 function getListSubject() {
-    axios.get('http://localhost:5000/api/v1/subjects/',
+    axios.get('http://localhost:5000/api/v1/shiftsRooms/',
         {
             headers: {
-                'token': window.localStorage.getItem('token')
+                'examination-token': window.localStorage.getItem('examtoken')
             }
         }
     )
@@ -87,11 +87,11 @@ function getListSubject() {
             if (response.data.success===true) {
 
 
-                response.data.data.subjects.forEach(element =>
+                response.data.data.results.forEach(element =>
                     {
                         let subcode=element.subject_code.toString();
                         console.log(subcode)
-                        $('#selectSubject').append('<option>'+element.subject_code+':'+element.name+'</option>');
+                        $('#selectSubject').append('<option value="'+element.id+'">'+element.subject_code+':'+element.name+'</option>');
 
                     }
 
@@ -154,3 +154,44 @@ async function uploadfile() { //login vao app
 
 }
 
+
+$('#getliststudentin').on('click',function (e) {
+    create()
+});
+async function create() { // Khoi
+
+    console.log($('selectSubject').val());
+    axios.get('http://localhost:5000/api/v1/shiftsRoomsStudents/examreg?shift_room_id='+$('selectSubject').val(),
+        {
+            headers: {
+                'examination-token': window.localStorage.getItem('examtoken')
+            }
+        }
+    )
+        .then(function (response) {
+            if (response.data.success===true) {
+                var stt=1;
+
+                console.log(response.data.data.results)
+                response.data.data.results.forEach(function (element) {
+
+                        $('#mainTable > tbody:last-child').append('<tr class="blackclass"><td>'+stt+'</td><td>'+element.shift_id+'</td><td>'+element.room_id+'</td><td>'+element.current_slot+'</td><td>'+element.subject_code+'</td></tr>')
+
+                        stt++
+
+
+                })
+                khoitao()
+
+
+            }
+            else {
+                console.log(response);
+
+            }
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+
+}

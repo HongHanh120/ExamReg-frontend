@@ -82,7 +82,7 @@ async function create() { // Khoi
 
                 response.data.data.shifts.forEach(element =>
                     {
-                        $('#mainTable > tbody:last-child').append('<tr><td>'+stt+'</td><td>'+element.name+'</td><td class="unixtime">'+convertunix(element.start_time)+'</td><td>'+element.time+'</td><td><i onclick="setidtostorage('+element.id+')" class="fas fa-trash-alt" type="button"  data-toggle="modal" data-target="#deleteModal"></i></td></tr>');
+                        $('#mainTable > tbody:last-child').append('<tr><td>'+stt+'</td><td>'+element.name+'</td><td class="unixtime">'+convertunix(element.start_time)+'</td><td>'+element.time/60+' phút </td><td><i onclick="setidtostorage('+element.id+')" class="fas fa-trash-alt" type="button"  data-toggle="modal" data-target="#deleteModal"></i></td></tr>');
                         stt++;
                     }
                 )

@@ -1,38 +1,38 @@
 getListExam()
 
-// function myslide() {
-//     document.getElementById("slidebar").classList.toggle('active');
-// }
-// function exportTableToExcel(tableID, filename = ''){
-//     var downloadLink;
-//     var dataType = 'application/vnd.ms-excel';
-//     var tableSelect = document.getElementById(tableID);
-//     var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
-//
-//     // Specify file name
-//     filename = filename?filename+'.xls':'dulieu.xls';
-//
-//     // Create download link element
-//     downloadLink = document.createElement("a");
-//
-//     document.body.appendChild(downloadLink);
-//
-//     if(navigator.msSaveOrOpenBlob){
-//         var blob = new Blob(['\ufeff', tableHTML], {
-//             type: dataType
-//         });
-//         navigator.msSaveOrOpenBlob( blob, filename);
-//     }else{
-//         // Create a link to the file
-//         downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
-//
-//
-//         downloadLink.download = filename;
-//
-//
-//         downloadLink.click();
-//     }
-// }
+function myslide() {
+    document.getElementById("slidebar").classList.toggle('active');
+}
+function exportTableToExcel(tableID, filename = ''){
+    var downloadLink;
+    var dataType = 'application/vnd.ms-excel';
+    var tableSelect = document.getElementById(tableID);
+    var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+
+    // Specify file name
+    filename = filename?filename+'.xls':'dulieu.xls';
+
+    // Create download link element
+    downloadLink = document.createElement("a");
+
+    document.body.appendChild(downloadLink);
+
+    if(navigator.msSaveOrOpenBlob){
+        var blob = new Blob(['\ufeff', tableHTML], {
+            type: dataType
+        });
+        navigator.msSaveOrOpenBlob( blob, filename);
+    }else{
+        // Create a link to the file
+        downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+
+
+        downloadLink.download = filename;
+
+
+        downloadLink.click();
+    }
+}
 
 
 
@@ -116,9 +116,10 @@ async function create() { // Khoi
                 list=[];
                 console.log(response.data.data.results)
                 response.data.data.results.forEach(function (element) {
-                    if(element.reg==true) {
-                        $('#mainTable > tbody:last-child').append('<tr class="blackclass"><td>'+element.shift_id+'</td><td>'+element.room_id+'</td><td>'+element.current_slot+'</td><td>'+element.subject_code+'</td></tr>')
-                        list.push(element)
+                    if(element.reg==false) {
+                        $('#mainTable > tbody:last-child').append('<tr class="blackclass"><td>'+stt+'</td><td>'+element.shift_id+'</td><td>'+element.room_id+'</td><td>'+element.current_slot+'</td><td>'+element.subject_code+'</td></tr>')
+
+                        stt++
                     }
 
                 })

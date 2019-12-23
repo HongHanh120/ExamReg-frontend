@@ -82,7 +82,6 @@ function khoitao() {
         })
     })
 }
-
 function convertunix(unixtime){
 
     var unixtimestamp = parseFloat(unixtime);
@@ -100,6 +99,39 @@ function convertunix(unixtime){
 
 }
 
+
+
+async function changepass() { // Khoi
+
+
+    axios.put('http://localhost:5000/api/v1/accounts/password',{
+            "old_password":document.getElementById('old_password').value,
+            "new_password":document.getElementById('new_password').value,
+            "confirm_new_password":document.getElementById('confirm_new_password').value
+
+    },
+        {
+            headers: {
+                'token': window.localStorage.getItem('token')
+            }
+        }
+    )
+        .then(function (response) {
+            if (response.data.success===true) {
+                alert('Change pass success')
+
+
+            }
+            else {
+                console.log(response);
+                alert(response.data.reason)
+            }
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+
+}
 
 
 
