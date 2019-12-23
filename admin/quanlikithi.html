@@ -69,6 +69,14 @@
                             <option value="10">10</option>
                             <option value="15">15</option>
                             <option value="20">20</option>
+                            <option value="20">50</option>
+
+                        </select>
+                        <select id="selectExam" class="custom-select custom-select-sm form-control form-control-sm">
+
+                        </select>
+                        <select id="selectSubject" class="custom-select custom-select-sm form-control form-control-sm">
+
                         </select>
                     </div>
                     <div class="form-group" id="timmonhoc">
@@ -110,7 +118,7 @@
         </div>
         <div class="card-footer">
             <div class="float-right">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addsubjectModal" style="float: right">Thêm kì thi</button>
+                <button type="button" id="insertt" class="btn btn-primary" data-toggle="modal" data-target="#addsubjectModal" style="float: right">Thêm kì thi</button>
             </div>
             <div >
                 <button class="btn btn-outline-primary" id="importButton" data-toggle="modal" data-target="#importModal">Nhập</button>
@@ -132,28 +140,27 @@
             <div class="modal-body">
                 <form>
                     <div class="form-group">
-                        <label for="codesubject" class="col-form-label">Mã kì thi:</label>
-                        <input type="text" class="form-control" id="codesubject">
-                    </div>
-                    <div class="form-group">
-                        <label for="namesubject" class="col-form-label">Tên kì thi:</label>
-                        <select id="namesubject" class="custom-select custom-select-sm form-control form-control-sm">
-                            <option>Học kì I năm 2019-2020</option>
-                            <option>Học kì II năm 2019-2020</option>
+                        <label for="subject_code" class="col-form-label">Môn ọc:</label>
+                        <select id="subject_code" class="custom-select custom-select-sm form-control form-control-sm">
+
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="dateterm" class="col-form-label">Ngày thi:</label>
-                        <input type="date" class="form-control" id="dateterm"></textarea>
+                        <label for="shift_id" class="col-form-label">Ngày thi và ca :</label>
+                        <select id="shift_id" class="custom-select custom-select-sm form-control form-control-sm">
+
+                        </select>
                     </div>
                     <div class="form-group">
-                        <label for="timeterm" class="col-form-label">Thời gian:</label>
-                        <input type="time" class="form-control" id="timeterm"></textarea>
+                        <label for="room_id" class="col-form-label">Phòng thi:</label>
+                        <select id="room_id" class="custom-select custom-select-sm form-control form-control-sm">
+                        </select>
                     </div>
+
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Thêm kì thi</button>
+                <button id="submit_insert" type="button" class="btn btn-primary">Thêm kì thi</button>
             </div>
         </div>
     </div>
@@ -256,7 +263,8 @@
     </div>
 
 </div>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="../js/pagiation.js"></script>
 <script src="quanlikithi.js"></script>
 
