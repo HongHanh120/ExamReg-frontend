@@ -160,6 +160,9 @@ async function uploadfile() { //login vao app
         });
 
 }
+function dangxuat() {
+    window.location.href = "../login.html";
+}
 
 
 

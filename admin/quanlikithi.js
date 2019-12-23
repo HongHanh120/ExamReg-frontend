@@ -314,6 +314,9 @@ async function deleteE() {
 //     })
 // }
 
+function dangxuat() {
+    window.location.href = "../login.html";
+}
 
 
 

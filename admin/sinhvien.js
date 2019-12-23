@@ -103,6 +103,10 @@ function convertunix(unixtime){
     return convdataTime
 
 }
+function dangxuat() {
+    window.location.href = "../login.html";
+}
+
 
 
 

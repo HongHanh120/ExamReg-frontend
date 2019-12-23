@@ -112,6 +112,9 @@ async function create() { // Khoi
         });
 
 }
+function dangxuat() {
+    window.location.href = "../login.html";
+}
 
 
 

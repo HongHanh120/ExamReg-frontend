@@ -164,6 +164,9 @@ async function updateRoom() {
             console.log(error);
         });
 }
+function dangxuat() {
+    window.location.href = "../login.html";
+}
 
 
 

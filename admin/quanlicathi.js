@@ -202,3 +202,6 @@ async function deleteExam() {
             console.log(error);
         });
 }
+function dangxuat() {
+    window.location.href = "../login.html";
+}
