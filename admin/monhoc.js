@@ -21,7 +21,7 @@ async function crete() { //login vao app
                     {
                         let subcode=element.subject_code.toString();
                         console.log(subcode)
-                        $('#mainTable > tbody:last-child').append('<tr><td>'+stt+'</td><td>'+element.subject_code+'</td><td>'+element.name+'</td><td>'+element.credit+'</td><td><i onclick="setidtostorage('+stt+')" class="far fa-edit" type="button"  data-toggle="modal" data-target="#editModal"></i><i onclick="setidtostorage('+stt+')" class="fas fa-trash-alt" type="button"  data-toggle="modal" data-target="#deleteModal"></i></td></tr>');
+                        $('#mainTable > tbody:last-child').append('<tr><td>'+stt+'</td><td>'+element.subject_code+'</td><td>'+element.name+'</td><td>'+element.credit+'</td><td><i onclick="setidtostorage('+stt+')" class="far fa-edit" type="button"  data-toggle="modal" data-target="#editModal"></i>&nbsp;<i onclick="setidtostorage('+stt+')" class="fas fa-trash-alt" type="button"  data-toggle="modal" data-target="#deleteModal"></i></td></tr>');
                         stt++;
 
                     }
