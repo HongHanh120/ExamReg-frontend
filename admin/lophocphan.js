@@ -2,9 +2,9 @@ function myslide() {
     document.getElementById("slidebar").classList.toggle('active');
 }
 getListExam()
-
-
+getExamtoken()
 create();
+
 
 async function getListExam() { // Khoi
     axios.get('http://localhost:5000/api/v1/examinations/',

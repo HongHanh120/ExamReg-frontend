@@ -69,6 +69,9 @@
                             <option value="15">15</option>
                             <option value="20">20</option>
                         </select>
+                        <select id="selectExam" class="custom-select custom-select-sm form-control form-control-sm">
+
+                        </select>
                     </div>
                     <div class="form-group" id="timmonhoc">
                         <label>Tìm kiếm:</label>
@@ -128,12 +131,28 @@
 
                     <div class="form-group">
                         <label for="timeterm" class="col-form-label">Thời gian:</label>
-                        <input type="time" class="form-control" id="timeterm"></textarea>
+                        <input type="date" class="form-control" id="timeterm"></textarea>
+
+                    </div>
+                    <div class="form-group">
+                        <select id="hourDate" class="custom-select custom-select-sm form-control form-control-sm">
+                            <option value="7">Sáng 7h</option>
+                            <option value="13">Chiều 13</option>
+                        </select>
+
+                    </div>
+                    <div>
+                        <label for="totalTime" class="col-form-label">Thời gian lam bai:</label>
+                        <input type="number" class="form-control" id="totalTime"></textarea>
+                    </div>
+                    <div>
+                        <label for="shiftsName" class="col-form-label">ten ca thi:</label>
+                        <input type="text" class="form-control" id="shiftsName"></textarea>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Thêm ca thi</button>
+                <button id="confirmInsertShift" type="button" class="btn btn-primary">Thêm ca thi</button>
             </div>
         </div>
     </div>
@@ -207,6 +226,9 @@
     </div>
 
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
 
 <script src="../js/pagiation.js"></script>
 <script src="quanlicathi.js"></script>
