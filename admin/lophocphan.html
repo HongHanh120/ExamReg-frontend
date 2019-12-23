@@ -145,10 +145,10 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form>
+                <form data-toggle="validator" role="form">
                     <div class="form-group">
                         <label for="classcode" class="col-form-label">Mã học phần:</label>
-                        <input type="text" class="form-control" id="classcode">
+                        <input type="text" class="form-control" id="classcode" required>
                     </div>
 
                     <div class="form-group">
@@ -157,12 +157,12 @@
 
                         </select>
                     </div>
-
+                    <div class="modal-footer">
+                        <button id="btnConfirmInsert" type="button" class="btn btn-primary">Thêm học phần</button>
+                    </div>
                 </form>
             </div>
-            <div class="modal-footer">
-                <button id="btnConfirmInsert" type="button" class="btn btn-primary">Thêm học phần</button>
-            </div>
+
         </div>
     </div>
 </div>

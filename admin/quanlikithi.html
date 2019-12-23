@@ -81,7 +81,7 @@
                     </div>
                     <div class="form-group" id="timmonhoc">
                         <label>Tìm kiếm:</label>
-                        <input type="search" class="form-control form-control-sm" placeholder="Nhập tên kì thi">
+                        <input type="search" class="form-control form-control-sm" placeholder="Nhập tên kì thi" >
                     </div>
                     <div style="margin-top: 20px"><a href="quanlicathi.html" class="lienket">quản lí ca thi</a></div>
                     <div><a href="quanlilophocphan.html" class="lienket">quản lí lớp học phần</a></div>
@@ -138,9 +138,9 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form>
+                <form data-toggle="validator" role="form">
                     <div class="form-group">
-                        <label for="subject_code" class="col-form-label">Môn ọc:</label>
+                        <label for="subject_code" class="col-form-label">Môn học:</label>
                         <select id="subject_code" class="custom-select custom-select-sm form-control form-control-sm">
 
                         </select>
@@ -156,12 +156,12 @@
                         <select id="room_id" class="custom-select custom-select-sm form-control form-control-sm">
                         </select>
                     </div>
-
+                    <div class="modal-footer">
+                        <button id="submit_insert" type="button" class="btn btn-primary">Thêm kì thi</button>
+                    </div>
                 </form>
             </div>
-            <div class="modal-footer">
-                <button id="submit_insert" type="button" class="btn btn-primary">Thêm kì thi</button>
-            </div>
+
         </div>
     </div>
 </div>

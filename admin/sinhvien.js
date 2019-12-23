@@ -1,6 +1,8 @@
 function myslide() {
     document.getElementById("slidebar").classList.toggle('active');
 }
+
+
 crete()
 async function crete() { //login vao app
     $('#mainTable tbody').html("");
@@ -85,7 +87,6 @@ async function uploadfile() { //login vao app
 function setidtostorage(id) {
     window.localStorage.setItem('tempId',id);
 }
-
 
 
 

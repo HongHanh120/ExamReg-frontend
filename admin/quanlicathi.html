@@ -130,7 +130,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form>
+                <form data-toggle="validator" role="form">
 
 
                     <div class="form-group">
@@ -146,18 +146,19 @@
 
                     </div>
                     <div>
-                        <label for="totalTime" class="col-form-label">Thời gian lam bai:</label>
-                        <input type="number" class="form-control" id="totalTime"></textarea>
+                        <label for="totalTime" class="col-form-label">Thời gian làm bài:</label>
+                        <input type="number" class="form-control" id="totalTime" required></textarea>
                     </div>
                     <div>
-                        <label for="shiftsName" class="col-form-label">ten ca thi:</label>
-                        <input type="text" class="form-control" id="shiftsName"></textarea>
+                        <label for="shiftsName" class="col-form-label">Tên ca thi:</label>
+                        <input type="text" class="form-control" id="shiftsName" required></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="confirmInsertShift" type="button" class="btn btn-primary">Thêm ca thi</button>
                     </div>
                 </form>
             </div>
-            <div class="modal-footer">
-                <button id="confirmInsertShift" type="button" class="btn btn-primary">Thêm ca thi</button>
-            </div>
+
         </div>
     </div>
 </div>

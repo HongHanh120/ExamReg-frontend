@@ -122,16 +122,17 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form>
+                <form data-toggle="validator" role="form">
                     <div class="form-group">
                         <label for="namesubject" class="col-form-label">Tên kì thi:</label>
-                        <input type="text"  class="form-control" id="namesubject"></textarea>
+                        <input type="text"  class="form-control" id="namesubject" required></textarea>
                     </div>
                 </form>
+                <div class="modal-footer">
+                    <button type="button" id="submit_insert" class="btn btn-primary">Thêm kì thi</button>
+                </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" id="submit_insert" class="btn btn-primary">Thêm kì thi</button>
-            </div>
+
         </div>
     </div>
 </div>
