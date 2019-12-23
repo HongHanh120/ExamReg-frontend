@@ -303,3 +303,13 @@ async function deleteE() {
             console.log(error);
         });
 }
+
+function fixtable() {
+    var trnum=0;
+    let table='#mainTable';
+    $(table+' tr:gt(0)').each(function () {
+        trnum++
+        console.log($(this)[0].children[0])
+
+    })
+}

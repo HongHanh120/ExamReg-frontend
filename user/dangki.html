@@ -13,7 +13,7 @@
           integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link rel="stylesheet" href="user.css">
     <link rel="stylesheet" href="dangki.css">
-
+    <link rel="stylesheet" href="../css/custom.css">
 </head>
 <body>
 <!--thanh chuc nang tren dau-->
@@ -55,6 +55,9 @@
                             <option value="10">10</option>
                             <option value="15">15</option>
                             <option value="20">20</option>
+                        </select>
+                        <select id="selectExam" class="custom-select custom-select-sm form-control form-control-sm">
+
                         </select>
                     </div>
                     <div class="form-group" id="timmonhoc">
@@ -320,6 +323,7 @@
             <div class="float-right">
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal-confirm"  style="float: right">Xác nhận</button>
             </div>
+                                                                                            <i class="fas fa-trash-alt" data-toggle="modal" data-target="#regtest"></i>
         </div>
     </div>
 </div>
@@ -390,7 +394,32 @@
     </div>
 
 </div>
+<!-- dang ky-->
+<div class="container">
+    <div class="modal fade" id="regtest" role="dialog">
+        <div class="modal-dialog">
 
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Bạn có chắc chắn muốn xóa lớp học phần này.</p>
+                </div>
+                <div class="modal-footer">
+                    <button id="confirmDel" type="button" class="btn btn-default" data-dismiss="modal">Xác nhận</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="../js/pagiation.js"></script>
 <script src="dangki.js"></script>
 
 </body>
