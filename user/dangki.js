@@ -42,7 +42,7 @@ function addmoreRows() {
         '</tr>');
     $('#regisTable > tbody:last-child').append('<tr class="subRow"><td>1</td><td>INT33023</td><td>Phat trien ung dung web</td><td>3</td>' +
         '<td> 8:00 SA</td><td>24/12/2019</td><td>P303-G2</td>'+
-        '<td> <i class="fas fa-trash-alt"></i></td>' +
+        '<td> <i class=\"fas fa-trash-alt\" type=\"button\"  data-toggle=\"modal\" data-target=\"#deleteModal\"></i></td>' +
         '</tr>');
 
 }

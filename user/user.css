@@ -123,3 +123,13 @@
 #demo{
     padding-top: 52px;
 }
+.modal-header{
+    background-color: #b3d7ff;
+    border-radius: 3px;
+
+}
+.modal-title{
+    background-color: #b3d7ff;
+    color: white;
+    font-weight: bold;
+}
