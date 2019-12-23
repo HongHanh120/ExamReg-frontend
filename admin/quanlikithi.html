@@ -52,6 +52,7 @@
         <li><a href="quanlikithi.html"><i class="fas fa-user-cog"></i>Quản lí kì thi</a></li>
         <li><a href="quanlicathi.html"><i class="fas fa-user-cog"></i>Quản lí ca thi</a></li>
         <li><a href="quanlilophocphan.html"><i class="fas fa-user-cog"></i>Quản lí lớp học phần</a></li>
+        <li><a href="quanliphongthi.html"><i class="fas fa-user-cog"></i>Quản lí phòng thi</a></li>
     </ul>
 </div>
 <div class="container-fluid" id="quanli">
@@ -76,6 +77,7 @@
                     </div>
                     <div style="margin-top: 20px"><a href="quanlicathi.html" class="lienket">quản lí ca thi</a></div>
                     <div><a href="quanlilophocphan.html" class="lienket">quản lí lớp học phần</a></div>
+                    <div><a href="quanliphongthi.html" class="lienket">quản lí phòng thi</a></div>
                     <div style="font-size: 120%; margin-top: 20px"><label >Danh sách các kì thi đã tạo</label></div>
 
 
@@ -109,6 +111,9 @@
         <div class="card-footer">
             <div class="float-right">
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addsubjectModal" style="float: right">Thêm kì thi</button>
+            </div>
+            <div >
+                <button class="btn btn-outline-primary" id="importButton" data-toggle="modal" data-target="#importModal">Nhập</button>
             </div>
         </div>
     </div>
@@ -149,6 +154,27 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary">Thêm kì thi</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--nhap file ki thi-->
+<div class="modal fade" id="importModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Thêm danh sách kì thi</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="custom-file">
+                        <input type="file" class="form-control" id="customFile">
+                    </div>
+                    <button class="btn btn-primary float-right" id="confirmImportModal" type="button" style="margin-top: 1rem">Ghi nhận</button>
+                </form>
             </div>
         </div>
     </div>

@@ -133,3 +133,8 @@
     color: white;
     font-weight: bold;
 }
+#importButton{
+    border-color: #377bd1;
+    color: #377bd1;
+    background-color: white;
+}
