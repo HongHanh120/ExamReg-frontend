@@ -1,4 +1,4 @@
-#nguoidung{
+#quanli{
     background-color: #ecf0f5;
     float: right;
     width: 85%;
@@ -20,11 +20,4 @@ thead{
 }
 th{
     text-align: center;
-}
-.my-custom-scrollbar {
-    height: 400px;
-    overflow: auto;
-}
-.table-wrapper-scroll-y {
-    display: block;
 }

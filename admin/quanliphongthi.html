@@ -13,8 +13,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
           integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link rel="stylesheet" href="admin.css">
-    <link rel="stylesheet" href="taokithi.css">
-    <link rel="stylesheet" href="../css/custom.css">
+    <link rel="stylesheet" href="quanliphongthi.css">
 
 </head>
 <body>
@@ -56,7 +55,7 @@
 </div>
 <div class="container-fluid" id="quanli">
     <div class="d-sm-flex align-items-center justify-content-between mb-4"style="font-size: 200%">
-        <p>Tạo kì thi</p>
+        <p>Quản lí phòng thi</p>
     </div>
     <div class="card shadow mb-3">
         <div class="card-body">
@@ -72,22 +71,24 @@
                     </div>
                     <div class="form-group" id="timmonhoc">
                         <label>Tìm kiếm:</label>
-                        <input type="search" class="form-control form-control-sm" placeholder="Nhập tên kì thi">
+                        <input type="search" class="form-control form-control-sm" placeholder="Nhập tên phòng thi">
                     </div>
-                    <div style="font-size: 120%; margin-top: 20px"><label >Danh sách các kì thi đã tạo</label></div>
+                    <div style="font-size: 120%; margin-top: 20px"><label >Danh sách các phòng thi và số lượng chỗ thi.</label></div>
 
                 </div>
                 <table id="mainTable" class="table table-bordered p-0 table-striped my-table"style="color: black; text-align:center;">
                     <thead class="thead-dark">
                     <tr>
                         <th>Stt</th>
-                        <th>Mã kì thi</th>
-                        <th>Tên Kỳ thi</th>
-                        <th>Thời gian</th>
+                        <th>Phòng thi</th>
+                        <th>Số lượng chỗ</th>
+
                         <th>Chỉnh sửa, xóa</th>
                     </tr>
                     </thead>
-                    <tbody> </tbody>
+                    <tbody>
+
+                    </tbody>
                 </table>
                 <div class="row w-100 m-0 mt-3">
                     <div class="col-sm-12 col-md-5">
@@ -105,7 +106,10 @@
         </div>
         <div class="card-footer">
             <div class="float-right">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addsubjectModal" style="float: right">Thêm kì thi</button>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addsubjectModal" style="float: right">Thêm phòng</button>
+            </div>
+            <div >
+                <button class="btn btn-outline-primary" id="importButton" data-toggle="modal" data-target="#importModal">Nhập</button>
             </div>
         </div>
     </div>
@@ -116,21 +120,48 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Thêm kì thi</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Thêm phòng</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <form>
+
+
                     <div class="form-group">
-                        <label for="namesubject" class="col-form-label">Tên kì thi:</label>
-                        <input type="text"  class="form-control" id="namesubject"></textarea>
+                        <label for="room" class="col-form-label">Phòng thi:</label>
+                        <input type="text" class="form-control" id="room"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="chair" class="col-form-label">Số lượng chỗ:</label>
+                        <input type="text" class="form-control" id="chair"></textarea>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" id="submit_insert" class="btn btn-primary">Thêm kì thi</button>
+                <button type="button" class="btn btn-primary">Thêm phòng</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--nhap file phòng-->
+<div class="modal fade" id="importModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Thêm danh sách phòng</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="custom-file">
+                        <input type="file" class="form-control" id="customFile">
+                    </div>
+                    <button class="btn btn-primary float-right" id="confirmImportModal" type="button" style="margin-top: 1rem">Ghi nhận</button>
+                </form>
             </div>
         </div>
     </div>
@@ -147,13 +178,17 @@
             <div class="modal-body">
                 <form>
                     <div class="form-group">
-                        <label for="fixnamesubject" class="col-form-label">Tên kì thi:</label>
-                        <input type="text"  class="form-control" id="fixnamesubject"></textarea>
+                        <label for="fixroom" class="col-form-label">Phòng thi:</label>
+                        <input type="text" class="form-control" id="fixroom"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="fixchair" class="col-form-label">Số lượng chỗ:</label>
+                        <input type="text" class="form-control" id="fixchair"></textarea>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button id="submitfixname" type="button" class="btn btn-primary">Xác nhận</button>
+                <button type="button" class="btn btn-primary">Xác nhận</button>
             </div>
         </div>
     </div>
@@ -169,10 +204,10 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <p>Bạn có chắc chắn xóa kì thi này.</p>
+                    <p>Bạn có chắc chắn xóa phòng thi này.</p>
                 </div>
                 <div class="modal-footer">
-                    <button id="confirmDel" type="button" class="btn btn-default" data-dismiss="modal">Xác nhận</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Xác nhận</button>
                 </div>
             </div>
 
@@ -205,11 +240,8 @@
 
 </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script src="taokithi.js"></script>
 <script src="../js/pagiation.js"></script>
-
+<script src="quanliphongthi.js"></script>
 
 </body>
 </html>
