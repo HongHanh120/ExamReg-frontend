@@ -9,10 +9,14 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
+
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
           integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-    <link rel="stylesheet" href="monhoc.css">
     <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="quanlicathi.css">
+
+
+
 </head>
 <body>
 <!--thanh chuc nang tren dau-->
@@ -52,7 +56,7 @@
 </div>
 <div class="container-fluid" id="quanli">
     <div class="d-sm-flex align-items-center justify-content-between mb-4"style="font-size: 200%">
-        <p>Quản lý môn học</p>
+        <p>Quản lí ca thi</p>
     </div>
     <div class="card shadow mb-3">
         <div class="card-body">
@@ -68,22 +72,23 @@
                     </div>
                     <div class="form-group" id="timmonhoc">
                         <label>Tìm kiếm:</label>
-                        <input type="search" class="form-control form-control-sm" placeholder="Nhập tên môn học">
+                        <input type="search" class="form-control form-control-sm" placeholder="Nhập tên ca thi">
                     </div>
-                    <div style="font-size: 120%; margin-top: 20px"><label >Danh sách môn học</label></div>
+                    <div style="font-size: 120%; margin-top: 20px"><label >Danh sách các ca thi đã tạo</label></div>
 
                 </div>
                 <table id="mainTable" class="table table-bordered p-0 table-striped my-table"style="color: black; text-align:center;">
                     <thead class="thead-dark">
                     <tr>
                         <th>Stt</th>
-                        <th>Mã học phần</th>
-                        <th>Tên học phần</th>
-                        <th>TC</th>
-                        <th>Chỉnh sửa,xóa</th>
+                        <th>Ca thi</th>
+
+                        <th>Chỉnh sửa, xóa</th>
                     </tr>
                     </thead>
-                    <tbody> </tbody>
+                    <tbody>
+
+                    </tbody>
                 </table>
                 <div class="row w-100 m-0 mt-3">
                     <div class="col-sm-12 col-md-5">
@@ -101,68 +106,34 @@
         </div>
         <div class="card-footer">
             <div class="float-right">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addsubjectModal" style="float: right">Thêm môn</button>
-            </div>
-            <div >
-                <button class="btn btn-outline-primary" id="importButton" data-toggle="modal" data-target="#importModal">Nhập</button>
-            </div>
-        </div>
-    </div>
-</div>
-<!--nhap file môn-->
-<div class="modal fade" id="importModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Thêm danh sách môn học</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="custom-file">
-                        <input type="file" class="form-control" id="customFile">
-                    </div>
-                    <button class="btn btn-primary float-right" id="confirmImportModal" type="button" style="margin-top: 1rem">Ghi nhận</button>
-                </form>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addsubjectModal" style="float: right">Thêm ca thi</button>
             </div>
         </div>
     </div>
 </div>
 
-<!--them mon hoc-->
+
 <div class="modal fade" id="addsubjectModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Thêm môn học</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Thêm ca thi</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <form>
+
+
                     <div class="form-group">
-                        <label for="choosefile" class="col-form-label">Chọn từ tệp:</label>
-                        <input type="file" class="form-control" id="choosefile">
-                    </div>
-                    <div class="form-group">
-                        <label for="codesubject" class="col-form-label">Ma Môn:</label>
-                        <input type="text" class="form-control" id="codesubject">
-                    </div>
-                    <div class="form-group">
-                        <label for="namesubject" class="col-form-label">Tên môn:</label>
-                        <input type="text"  class="form-control" id="namesubject"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="message-text" class="col-form-label">Tín chỉ:</label>
-                        <input type="text" class="form-control" id="message-text"></textarea>
+                        <label for="timeterm" class="col-form-label">Thời gian:</label>
+                        <input type="time" class="form-control" id="timeterm"></textarea>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Thêm môn</button>
+                <button type="button" class="btn btn-primary">Thêm ca thi</button>
             </div>
         </div>
     </div>
@@ -179,21 +150,13 @@
             <div class="modal-body">
                 <form>
                     <div class="form-group">
-                        <label for="fixcodesubject" class="col-form-label">Mã môn:</label>
-                        <input type="text" class="form-control" id="fixcodesubject">
-                    </div>
-                    <div class="form-group">
-                        <label for="fixnamesubject" class="col-form-label">Tên học phần:</label>
-                        <input type="text"  class="form-control" id="fixnamesubject"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="fixportal" class="col-form-label">Tín chỉ:</label>
-                        <input type="text" class="form-control" id="fixportal"></textarea>
+                        <label for="fixportal" class="col-form-label">Thời gian:</label>
+                        <input type="time" class="form-control" id="fixportal"></textarea>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button id="confirmFix" type="button" class="btn btn-primary">Xác nhận</button>
+                <button type="button" class="btn btn-primary">Xác nhận</button>
             </div>
         </div>
     </div>
@@ -209,10 +172,10 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <p>Ban có chắc chắn xóa môn học này.</p>
+                    <p>Bạn có chắc chắn xóa ca thi này.</p>
                 </div>
                 <div class="modal-footer">
-                    <button id="confirmDel" type="button" class="btn btn-default" data-dismiss="modal">Xác nhận</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Xác nhận</button>
                 </div>
             </div>
 
@@ -220,6 +183,8 @@
     </div>
 
 </div>
+
+
 <!--dang xuat-->
 <div class="container">
     <div class="modal fade" id="myModal" role="dialog">
@@ -242,12 +207,9 @@
     </div>
 
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script src="./monhoc.js"></script>
+
 <script src="../js/pagiation.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="quanlicathi.js"></script>
 
 </body>
-
 </html>
