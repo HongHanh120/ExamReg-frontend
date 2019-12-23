@@ -1,43 +1,167 @@
 function myslide() {
     document.getElementById("slidebar").classList.toggle('active');
 }
-let danhsachkithi = [{
-    id_term: "7001",
-    term_name: "Phat trien ung dung web",
-    time_term:"2/1/2019"
 
-},{
-    id_term: "7001",
-    term_name: "Phat trien ung dung web",
-    time_term:"2/1/2019"
-}];
-// let termTable = $('#termTable')[0];
-// for(let i=0; i<danhsachkithi.length; i++){
-//     let row = termTable.insertRow(-1);
-//     let cell1 = row.insertCell(-1);
-//     let cell2 = row.insertCell(-1);
-//     let cell3 = row.insertCell(-1);
-//     let cell4 = row.insertCell(-1);
-//     let cell5 = row.insertCell(-1);
-//     cell1.innerHTML = i+1;
-//     cell2.innerHTML = danhsachkithi[i].id_term;
-//     cell3.innerHTML = danhsachkithi[i].term_name;
-//     cell4.innerHTML = danhsachkithi[i].time_term;
-//     cell5.innerHTML = "<i class=\"far fa-edit\" type=\"button\"  data-toggle=\"modal\" data-target=\"#editModal\"></i>" +
-//         ", <i class=\"fas fa-trash-alt\" type=\"button\"  data-toggle=\"modal\" data-target=\"#deleteModal\"></i>" ;
-//
-// }
-addmoreRows()
+getListExam();
 
-function addmoreRows() {
-    $('#mainTable > tbody:last-child').append('<tr class="subRow"><td>1</td><td>8:00</td>' +
-        '<td><i class=\"far fa-edit\" type=\"button\"  data-toggle=\"modal\" data-target=\"#editModal\"></i>' +'&'+
-        ' <i class=\"fas fa-trash-alt\" type=\"button\"  data-toggle=\"modal\" data-target=\"#deleteModal\"></i></td>' +
-        '</tr>'+
-    '<tr class="subRow"><td>1</td><td>9:00</td>' +
-    '<td><i class=\"far fa-edit\" type=\"button\"  data-toggle=\"modal\" data-target=\"#editModal\"></i>' +'&'+
-    ' <i class=\"fas fa-trash-alt\" type=\"button\"  data-toggle=\"modal\" data-target=\"#deleteModal\"></i></td>' +
-    '</tr>'
-    );
+
+async function getListExam() { // Khoi
+    axios.get('http://localhost:5000/api/v1/examinations/',
+        {
+            headers: {
+                'token': window.localStorage.getItem('token')
+            }
+        }
+    )
+        .then(function (response) {
+            if (response.data.success===true) {
+                var stt=1;
+                response.data.data.exams[0].forEach(element =>
+                    {
+                        $('#selectExam').append('<option value="'+element.id+'">'+element.name+'</option>');
+                    }
+                );
+                khoitao();
+                onChangeExam();
+                getExamtoken();
+
+            }
+            else {
+                console.log(response);
+
+            }
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
 
 }
+
+function onChangeExam() {
+    $('#selectExam').on('change',function () {
+        getExamtoken()
+    })
+}
+
+function getExamtoken() {
+
+    axios.get('http://localhost:5000/api/v1/accounts/examination/'+$('#selectExam').val(),
+        {
+            headers: {
+                'token': window.localStorage.getItem('token')
+            }
+        }
+    )
+        .then(function (response) {
+            if (response.data.success===true) {
+                window.localStorage.setItem('examtoken',response.data.data.examinationToken);
+                create();
+            }
+            else {
+                console.log(response.data);
+
+            }
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+}
+
+async function create() { // Khoi
+    $('#mainTable tbody').html("");
+    axios.get('http://localhost:5000/api/v1/shifts/',
+        {
+            headers: {
+                'examination-token': window.localStorage.getItem('examtoken')
+            }
+        }
+    )
+        .then(function (response) {
+            if (response.data.success===true) {
+                var stt=1;
+
+                response.data.data.shifts.forEach(element =>
+                    {
+                        $('#mainTable > tbody:last-child').append('<tr><td>'+stt+'</td><td>'+element.name+'</td><td class="unixtime">'+convertunix(element.start_time)+'</td><td>'+element.time+'</td><td><i onclick="setidtostorage('+element.id+')" class="far fa-edit" type="button"  data-toggle="modal" data-target="#editModal"></i><i onclick="setidtostorage('+element.id+')" class="fas fa-trash-alt" type="button"  data-toggle="modal" data-target="#deleteModal"></i></td></tr>');
+                        stt++;
+                    }
+                )
+                khoitao();
+
+
+            }
+            else {
+                console.log(response);
+
+            }
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+
+}
+
+
+$('#confirmInsertShift').on('click',function () {
+
+    createShift();
+
+})
+
+async function createShift() { // Khoi
+    axios.post('http://localhost:5000/api/v1/shifts/',
+        {
+            "name":document.getElementById('shiftsName').value ,
+            "start_time": getunixTime(),
+            "time": parseInt(document.getElementById('totalTime').value)*60
+        },
+        {
+            headers: {
+                'examination-token': window.localStorage.getItem('examtoken')
+            }
+        }
+    )
+        .then(function (response) {
+            if (response.data.success===true) {
+                alert('Tao thanh cong');
+                location.reload();
+
+
+
+            }
+            else {
+                console.log(response.data.reason);
+                alert(response.data.reason);
+            }
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+
+}
+
+
+function convertunix(unixtime){
+
+    var unixtimestamp = parseFloat(unixtime);
+    var months_arr = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    var date = new Date(unixtimestamp*1000);
+    var year = date.getFullYear();
+    var month = months_arr[date.getMonth()];
+    var day = date.getDate();
+    var hours = date.getHours();
+    var minutes = "0" + date.getMinutes();
+    var seconds = "0" + date.getSeconds();
+    var convdataTime = month+'-'+day+'-'+year+' '+hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+
+    return convdataTime
+
+}
+
+function getunixTime() {
+    var t=(new Date($('#timeterm').val()).getTime()/1000);
+    if(parseInt($('#hourDate').val())===13) {t=t+3600*6; console.log('true')}
+
+    return t
+}
+

@@ -106,7 +106,7 @@
         </div>
         <div class="card-footer">
             <div class="float-right">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addsubjectModal" style="float: right">Thêm phòng</button>
+                <button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#addsubjectModal" style="float: right">Thêm phòng</button>
             </div>
             <div >
                 <button class="btn btn-outline-primary" id="importButton" data-toggle="modal" data-target="#importModal">Nhập</button>
@@ -140,7 +140,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Thêm phòng</button>
+                <button id="confirmInsert" type="button" class="btn btn-primary">Thêm phòng</button>
             </div>
         </div>
     </div>
@@ -188,7 +188,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Xác nhận</button>
+                <button type="button" id="submitfixname" class="btn btn-primary">Xác nhận</button>
             </div>
         </div>
     </div>
@@ -207,7 +207,7 @@
                     <p>Bạn có chắc chắn xóa phòng thi này.</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Xác nhận</button>
+                    <button id="confirmDel" type="button" class="btn btn-default" data-dismiss="modal">Xác nhận</button>
                 </div>
             </div>
 
@@ -240,6 +240,9 @@
 
 </div>
 
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="../js/pagiation.js"></script>
 <script src="quanliphongthi.js"></script>
 
