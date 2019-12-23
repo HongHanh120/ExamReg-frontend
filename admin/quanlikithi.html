@@ -57,7 +57,7 @@
 </div>
 <div class="container-fluid" id="quanli">
     <div class="d-sm-flex align-items-center justify-content-between mb-4"style="font-size: 200%">
-        <p>Quản lí kì thi</p>
+        <p>Quản lí bài thi</p>
     </div>
     <div class="card shadow mb-3">
         <div class="card-body">
@@ -72,20 +72,13 @@
                             <option value="20">50</option>
 
                         </select>
+                        <label>   Học kì: </label>
                         <select id="selectExam" class="custom-select custom-select-sm form-control form-control-sm">
 
                         </select>
-                        <select id="selectSubject" class="custom-select custom-select-sm form-control form-control-sm">
+                    </div>
 
-                        </select>
-                    </div>
-                    <div class="form-group" id="timmonhoc">
-                        <label>Tìm kiếm:</label>
-                        <input type="search" class="form-control form-control-sm" placeholder="Nhập tên kì thi">
-                    </div>
-                    <div style="margin-top: 20px"><a href="quanlicathi.html" class="lienket">quản lí ca thi</a></div>
-                    <div><a href="quanlilophocphan.html" class="lienket">quản lí lớp học phần</a></div>
-                    <div><a href="quanliphongthi.html" class="lienket">quản lí phòng thi</a></div>
+
                     <div style="font-size: 120%; margin-top: 20px"><label >Danh sách các kì thi đã tạo</label></div>
 
 
@@ -94,10 +87,11 @@
                     <thead class="thead-dark">
                     <tr>
                         <th>Stt</th>
-                        <th>Mã kì thi</th>
-                        <th>Tên Kỳ thi</th>
-                        <th>Thời gian</th>
-                        <th>Chỉnh sửa, xóa</th>
+                        <th>Ca thi  </th>
+                        <th>Phòng thi </th>
+                        <th>Số vị trí</th>
+                        <th>Mã môn học </th>
+                        <th></th>
                     </tr>
                     </thead>
                     <tbody> </tbody>
@@ -228,10 +222,10 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <p>Bạn có chắc chắn xóa kì thi này.</p>
+                    <p>Bạn có chắc chắn xóa bài thi này.</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Xác nhận</button>
+                    <button id="confirmDel" type="button" class="btn btn-default" data-dismiss="modal">Xác nhận</button>
                 </div>
             </div>
 
