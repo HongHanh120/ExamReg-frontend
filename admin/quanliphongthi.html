@@ -24,7 +24,7 @@
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-content">
-            <a href="#">Thông tin cá nhân</a>
+            <a href="#">Đổi mật khẩu</a>
             <a href="#" id="logOut" type="button"  data-toggle="modal" data-target="#myModal">Đăng xuất</a>
         </div>
     </div>
@@ -47,10 +47,16 @@
         <li><a href="danhsachcamthi.html"><i class="fas fa-user-slash"></i>Danh sách cấm thi</a></li>
         <li><a href="lophocphan.html"><i class="fas fa-book"></i>Lớp học phần</a></li>
         <li><a href="taokithi.html" ><i class="fas fa-folder"></i>Tạo kì thi</a></li>
-        <li><a href="quanlikithi.html"><i class="fas fa-user-cog"></i>Quản lí kì thi</a></li>
-        <li><a href="quanlicathi.html"><i class="fas fa-user-cog"></i>Quản lí ca thi</a></li>
-        <li><a href="quanlilophocphan.html"><i class="fas fa-user-cog"></i>Quản lí lớp học phần</a></li>
-        <li><a href="quanliphongthi.html"><i class="fas fa-user-cog"></i>Quản lí phòng thi</a></li>
+        <li><div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="listquanli"><i class="fas fa-user-cog"></i>Quản lí kì thi
+                <i class="fa fa-caret-down" style="padding-left: 65px"></i></button>
+            <ul class="dropdown-menu" style="background-color: #222d32; border-radius: 0px">
+                <li><a href="quanlicathi.html"><i class="fas fa-user-cog"></i>Quản lí ca thi</a></li>
+                <li><a href="quanlilophocphan.html"><i class="fas fa-user-cog"></i>Quản lí lớp học phần</a></li>
+                <li><a href="quanliphongthi.html"><i class="fas fa-user-cog"></i>Quản lí phòng thi</a></li>
+            </ul>
+        </div>
+        </li>
     </ul>
 </div>
 <div class="container-fluid" id="quanli">
@@ -83,7 +89,7 @@
                         <th>Phòng thi</th>
                         <th>Số lượng chỗ</th>
 
-                        <th>Chỉnh sửa, xóa</th>
+                        <th> </th>
                     </tr>
                     </thead>
                     <tbody>

@@ -12,6 +12,15 @@
     transition: all 500ms linear;
     margin-top: 50px;
 }
+ #listquanli{
+     background-color: #222d32;
+     border: none;
+     padding-left: 5px;
+     border-radius: 0px;
+ }
+#listquanli:hover{
+    background-color: grey;
+}
 
 #slidebar ul li a {
     float: none;
@@ -41,6 +50,10 @@
 }
 #slidebar ul a:hover{
     background-color: grey;
+}
+#slidebar ul a:active{
+    background-color: black;
+
 }
 .tab-content{
     padding-top : 100px;
