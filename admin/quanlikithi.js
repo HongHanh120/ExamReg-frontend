@@ -20,9 +20,9 @@ async function create() { // Khoi
         .then(function (response) {
             if (response.data.success===true) {
                 var stt=1;
-                response.data.data.rows.forEach(element =>
+                response.data.data.results.forEach(element =>
                     {
-                        $('#mainTable > tbody:last-child').append('<tr><td>'+stt+'</td><td>'+element.shift_id+'</td><td>'+element.room_id+'</td><td>'+element.current_slot+'</td><td>'+element.subject_code+'</td><td><i onclick=" setidtostorage('+element.id+')" class="fas fa-trash-alt" type="button"  data-toggle="modal" data-target="#deleteModal"></i></td></tr>');
+                        $('#mainTable > tbody:last-child').append('<tr><td>'+stt+'</td><td>'+convertunix(element.start_time)+'|'+element.time/60+'phut </td><td>'+element.room_name+'</td><td>'+element.current_slot+'</td><td>'+element.subject_code+'</td><td><i onclick=" setidtostorage('+element.id+')" class="fas fa-trash-alt" type="button"  data-toggle="modal" data-target="#deleteModal"></i></td></tr>');
                         stt++;
 
                     }
@@ -302,21 +302,4 @@ async function deleteE() {
         .catch(function (error) {
             console.log(error);
         });
-}
-
-// function fixtable() {
-//     var trnum=0;
-//     let table='#mainTable';
-//     $(table+' tr:gt(0)').each(function () {
-//         trnum++
-//         console.log($(this)[0].children[0])
-//
-//     })
-// }
-
-
-
-
-function s() {
-
 }

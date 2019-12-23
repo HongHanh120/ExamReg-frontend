@@ -91,7 +91,7 @@ function getListSubject() {
                     {
                         let subcode=element.subject_code.toString();
                         console.log(subcode)
-                        $('#selectSubject').append('<option value="'+element.id+'">'+element.subject_code+':'+element.name+'</option>');
+                        $('#selectSubject').append('<option value="'+element.id+'">'+convertunix(element.start_time)+'|'+element.room_name+'</option>');
 
                     }
 
@@ -172,8 +172,8 @@ async function create() { // Khoi
             if (response.data.success===true) {
                 var stt=1;
 
-                console.log(response.data.data.results)
-                response.data.data.results.forEach(function (element) {
+                console.log(response.data.data.rows)
+                response.data.data.results.rows(function (element) {
 
                         $('#mainTable > tbody:last-child').append('<tr class="blackclass"><td>'+stt+'</td><td>'+element.shift_id+'</td><td>'+element.room_id+'</td><td>'+element.current_slot+'</td><td>'+element.subject_code+'</td></tr>')
 
@@ -193,5 +193,6 @@ async function create() { // Khoi
         .catch(function (error) {
             console.log(error);
         });
-
 }
+
+
