@@ -78,6 +78,7 @@ async function create() { // Khoi
     )
         .then(function (response) {
             if (response.data.success===true) {
+                alert(0)
                 var stt=1;
 
                 response.data.data.rows.forEach(element =>

@@ -69,7 +69,7 @@ async function create() { // Khoi
     axios.get('http://localhost:5000/api/v1/shifts/',
         {
             headers: {
-                'examination-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZXhhbWluYXRpb25faWQiOiIxOTIiLCJpYXQiOjE1NzY5MTUzMTYsImV4cCI6MTU4NTU0MTUzMn0._Vdf27_UnXeL6n_FHH39sQRuTfwpmWd98XQkWYiiY44'
+                'examination-token': window.localStorage.getItem('examtoken')
             }
         }
     )
@@ -77,7 +77,7 @@ async function create() { // Khoi
             if (response.data.success===true) {
                 var stt=1;
 
-                response.data.data.rows.forEach(element =>
+                response.data.data.shifts.forEach(element =>
                     {
                         $('#mainTable > tbody:last-child').append('<tr><td>'+stt+'</td><td>'+element.name+'</td><td>'+element.start_time+'</td><td>'+element.time+'</td><td><i onclick="setidtostorage('+element.id+')" class="far fa-edit" type="button"  data-toggle="modal" data-target="#editModal"></i><i onclick="setidtostorage('+element.id+')" class="fas fa-trash-alt" type="button"  data-toggle="modal" data-target="#deleteModal"></i></td></tr>');
                         stt++;
@@ -93,13 +93,14 @@ async function create() { // Khoi
             }
         })
         .catch(function (error) {
-            console.log(error.data);
+            console.log(error);
         });
 
 }
 
-$('#selectExam').on('confirmInsertShift',function () {
-    createShift()
+
+$('#confirmInsertShift').on('click',function () {
+    createShift();
 })
 
 async function createShift() { // Khoi
