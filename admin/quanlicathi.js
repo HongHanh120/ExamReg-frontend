@@ -3,6 +3,8 @@ function myslide() {
 }
 
 getListExam();
+
+
 async function getListExam() { // Khoi
     axios.get('http://localhost:5000/api/v1/examinations/',
         {
@@ -21,6 +23,7 @@ async function getListExam() { // Khoi
                 );
                 khoitao();
                 onChangeExam();
+                getExamtoken();
 
             }
             else {
@@ -79,11 +82,11 @@ async function create() { // Khoi
 
                 response.data.data.shifts.forEach(element =>
                     {
-                        $('#mainTable > tbody:last-child').append('<tr><td>'+stt+'</td><td>'+element.name+'</td><td>'+element.start_time+'</td><td>'+element.time+'</td><td><i onclick="setidtostorage('+element.id+')" class="far fa-edit" type="button"  data-toggle="modal" data-target="#editModal"></i><i onclick="setidtostorage('+element.id+')" class="fas fa-trash-alt" type="button"  data-toggle="modal" data-target="#deleteModal"></i></td></tr>');
+                        $('#mainTable > tbody:last-child').append('<tr><td>'+stt+'</td><td>'+element.name+'</td><td class="unixtime">'+convertunix(element.start_time)+'</td><td>'+element.time+'</td><td><i onclick="setidtostorage('+element.id+')" class="far fa-edit" type="button"  data-toggle="modal" data-target="#editModal"></i><i onclick="setidtostorage('+element.id+')" class="fas fa-trash-alt" type="button"  data-toggle="modal" data-target="#deleteModal"></i></td></tr>');
                         stt++;
                     }
                 )
-                khoitao()
+                khoitao();
 
 
             }
@@ -100,14 +103,16 @@ async function create() { // Khoi
 
 
 $('#confirmInsertShift').on('click',function () {
+
     createShift();
+
 })
 
 async function createShift() { // Khoi
     axios.post('http://localhost:5000/api/v1/shifts/',
         {
             "name":document.getElementById('shiftsName').value ,
-            "start_time": "1677172600",
+            "start_time": getunixTime(),
             "time": parseInt(document.getElementById('totalTime').value)*60
         },
         {
@@ -133,5 +138,30 @@ async function createShift() { // Khoi
             console.log(error);
         });
 
+}
+
+
+function convertunix(unixtime){
+
+    var unixtimestamp = parseFloat(unixtime);
+    var months_arr = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    var date = new Date(unixtimestamp*1000);
+    var year = date.getFullYear();
+    var month = months_arr[date.getMonth()];
+    var day = date.getDate();
+    var hours = date.getHours();
+    var minutes = "0" + date.getMinutes();
+    var seconds = "0" + date.getSeconds();
+    var convdataTime = month+'-'+day+'-'+year+' '+hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+
+    return convdataTime
+
+}
+
+function getunixTime() {
+    var t=(new Date($('#timeterm').val()).getTime()/1000);
+    if(parseInt($('#hourDate').val())===13) {t=t+3600*6; console.log('true')}
+
+    return t
 }
 

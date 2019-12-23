@@ -113,3 +113,44 @@ function getListSubject() {
 
 
 
+
+$('#confirmImportModal').on('click',function (e) {
+    uploadfile()
+})
+
+
+async function uploadfile() { //login vao app
+    var formData=new FormData();
+    formData.append('classesStudents',document.getElementById('customFile').files[0]);
+    const config = {
+        headers: {
+            'examination-token': window.localStorage.getItem('examtoken'),
+            'content-type': 'application/x-www-form-urlencoded'
+        },
+        onUploadProgress: function(progressEvent) {
+            var percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total)
+            console.log(percentCompleted)
+        }
+    }
+    axios.post('http://localhost:5000/api/v1/classesStudents/import',
+        formData
+        ,
+        config
+    )
+        .then(function (response) {
+            if (response.data.success===true) {
+                alert('Them thanh cong')
+
+            }
+            else {
+                console.log(response.data.reason);
+                alert(response.data.reason)
+
+            }
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+
+}
+

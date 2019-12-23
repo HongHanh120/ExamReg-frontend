@@ -1,8 +1,7 @@
 function myslide() {
     document.getElementById("slidebar").classList.toggle('active');
 }
-getListExam()
-getExamtoken()
+getListExam();
 create();
 
 
@@ -23,6 +22,7 @@ async function getListExam() { // Khoi
                 );
                 khoitao();
                 onChangeExam();
+                getExamtoken();
 
             }
             else {
