@@ -82,7 +82,7 @@ async function create() { // Khoi
 
                 response.data.data.shifts.forEach(element =>
                     {
-                        $('#mainTable > tbody:last-child').append('<tr><td>'+stt+'</td><td>'+element.name+'</td><td class="unixtime">'+convertunix(element.start_time)+'</td><td>'+element.time+'</td><td><i onclick="setidtostorage('+element.id+')" class="far fa-edit" type="button"  data-toggle="modal" data-target="#editModal"></i><i onclick="setidtostorage('+element.id+')" class="fas fa-trash-alt" type="button"  data-toggle="modal" data-target="#deleteModal"></i></td></tr>');
+                        $('#mainTable > tbody:last-child').append('<tr><td>'+stt+'</td><td>'+element.name+'</td><td class="unixtime">'+convertunix(element.start_time)+'</td><td>'+element.time+'</td><td><i onclick="setidtostorage('+element.id+')" class="fas fa-trash-alt" type="button"  data-toggle="modal" data-target="#deleteModal"></i></td></tr>');
                         stt++;
                     }
                 )
@@ -165,3 +165,40 @@ function getunixTime() {
     return t
 }
 
+
+function setidtostorage(id) {
+    window.localStorage.setItem('tempId',id);
+}
+
+
+
+
+
+//Xoa mon
+$('#confirmDel').on('click',function () {
+    deleteExam()
+})
+async function deleteExam() {
+    let idExam= window.localStorage.getItem('tempId')
+
+    axios.delete('http://localhost:5000/api/v1/shifts/?id='+idExam,
+        {
+            headers: {
+                'examination-token': window.localStorage.getItem('examtoken')
+            }
+        }
+    )
+        .then(function (response) {
+            if (response.data.success===true) {
+                alert("xoa thanh cong");
+                location.reload();
+            }
+            else {
+                console.log(response.data);
+                alert(response.data.reason)
+            }
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+}
