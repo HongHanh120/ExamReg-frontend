@@ -98,40 +98,21 @@ function convertunix(unixtime){
     return convdataTime
 
 }
-
-
-
-async function changepass() { // Khoi
-
-
-    axios.put('http://localhost:5000/api/v1/accounts/password',{
-            "old_password":document.getElementById('old_password').value,
-            "new_password":document.getElementById('new_password').value,
-            "confirm_new_password":document.getElementById('confirm_new_password').value
-
-    },
-        {
-            headers: {
-                'token': window.localStorage.getItem('token')
-            }
+$('.pagination_id').on('click',function () {
+    let selectedPage=(parseInt($(this).text()))
+    $(this).addClass(selectedPage)
+    var rowsIndex=0
+    $(table+' tr:gt(0)').each(function () {
+        rowsIndex++
+        if(rowsIndex>(maxRows*selectedPage)||rowsIndex<=((maxRows*selectedPage)-maxRows)){
+            $(this).hide()
         }
-    )
-        .then(function (response) {
-            if (response.data.success===true) {
-                alert('Change pass success')
+        else{
+            $(this).show()
+        }
 
-
-            }
-            else {
-                console.log(response);
-                alert(response.data.reason)
-            }
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
-
-}
+    })
+})
 
 
 

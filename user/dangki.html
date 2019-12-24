@@ -70,11 +70,11 @@
                     <tr>
                         <th>Stt</th>
                         <th>Mã môn</th>
-                        <th>Tên môn</th>
-                        <th>TC</th>
-                        <th>Thời gian thi</th>
-                        <th>Ngày</th>
                         <th>Địa điểm</th>
+                        <th>Vị trí còn lại</th>
+                        <th>Thời gian vào thi</th>
+                        <th>Thời gian </th>
+
                         <th >Đăng kí</th>
                     </tr>
                     </thead>
@@ -317,10 +317,7 @@
             </div>
         </div>
         <div class="card-footer">
-            <div class="float-right">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal-confirm"  style="float: right">Xác nhận</button>
-            </div>
-                                                                                            <i class="fas fa-trash-alt" data-toggle="modal" data-target="#regtest"></i>
+
         </div>
     </div>
 </div>
@@ -442,10 +439,32 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <p>Bạn có chắc chắn muốn xóa lớp học phần này.</p>
+                    <p>Bạn có chắc chắn dang ky học phần này.</p>
                 </div>
                 <div class="modal-footer">
-                    <button id="confirmDel" type="button" class="btn btn-default" data-dismiss="modal">Xác nhận</button>
+                    <button id="confirmInsert" type="button" class="btn btn-default" data-dismiss="modal">Xác nhận</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<div class="container">
+    <div class="modal fade" id="deltest" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Bạn có chắc chắn dang ky học phần này.</p>
+                </div>
+                <div class="modal-footer">
+                    <button id="confirmdeltest" type="button" class="btn btn-default" data-dismiss="modal">Xác nhận</button>
                 </div>
             </div>
 
@@ -456,7 +475,7 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<!--<script src="../js/pagiation.js"></script>-->
+<script src="../js/pagiation.js"></script>
 <script src="dangki.js"></script>
 
 </body>

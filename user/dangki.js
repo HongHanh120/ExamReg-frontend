@@ -85,7 +85,7 @@ async function create() { // Khoi
                 console.log(response.data.data.results)
                 response.data.data.results.forEach(function (element) {
                     if(element.reg==true) {
-                        $('#regisTable > tbody:last-child').append('<tr><td>stt</td><td>stt</td><td>'+convertunix(element.start_time)+'</td><td>'+element.shift_id+'</td><td>'+element.room_id+'</td><td>'+element.current_slot+'</td><td>'+element.subject_code+'</td></tr>')
+                        $('#regisTable > tbody:last-child').append('<tr ><td>stt</td><td>\'+element.subject_code+\'</td><td>\'+element.room_name+\'</td><td>\'+element.current_slot+\'</td><td>\'+convertunix(element.start_time)+\'</td><td>\'+element.time/60+\' phút </td><td><i onclick="setidtostorage(\'+element.id+\')" class="fas fa-trash-alt" data-toggle="modal" data-target="#deltest"></i></td></tr>')
                         list.push(element)
                         stt++;
                     }
@@ -101,6 +101,7 @@ async function create() { // Khoi
                 })
                 stt=0
                 response.data.data.results.forEach(function (element) {
+
                     if(element.block==false) {
                         $('#mainTable > tbody:last-child').append('<tr ><td>stt</td><td>'+element.subject_code+'</td><td>'+element.room_name+'</td><td>'+element.current_slot+'</td><td>'+convertunix(element.start_time)+'</td><td>'+element.time/60+' phút </td><td><i onclick="setidtostorage('+element.id+')" class="fas fa-trash-alt" data-toggle="modal" data-target="#regtest"></i></td></tr>')
                     }
@@ -142,7 +143,7 @@ function convertunix(unixtime){
 }
 async function dangki() { // Khoi
     axios.post('http://localhost:5000/api/v1/students/examreg',{
-
+            shift_room_id:window.localStorage.getItem('tempId')
     },
         {
             headers: {
@@ -162,6 +163,7 @@ async function dangki() { // Khoi
         })
         .catch(function (error) {
             console.log(error);
+            alert("loi thu lai");
         });
 
 }
@@ -169,3 +171,8 @@ async function dangki() { // Khoi
 function setidtostorage(id) {
     window.localStorage.setItem('tempId',id);
 }
+
+
+$('#confirmInsert').on('click',function () {
+    dangki()
+})
