@@ -92,14 +92,14 @@ async function create() { // Khoi
 
 
                 })
-                stt=0
+                stt=1
                 response.data.data.results.forEach(function (element) {
                     if(element.block==true) {
                         $('#mainTable > tbody:last-child').append('<tr><td>stt</td><td>'+element.shift_id+'</td><td>'+element.room_id+'</td><td>'+element.current_slot+'</td><td>'+element.subject_code+'</td></tr>')
                     }
                     stt++
                 })
-                stt=0
+                stt=1
                 response.data.data.results.forEach(function (element) {
 
                     if(element.block==false) {

@@ -117,9 +117,9 @@ async function create() { // Khoi
                 console.log(response.data.data.results)
                 response.data.data.results.forEach(function (element) {
                     if(element.reg==false) {
-                        $('#mainTable > tbody:last-child').append('<tr class="blackclass"><td>'+stt+'</td><td>'+element.shift_id+'</td><td>'+element.room_id+'</td><td>'+element.current_slot+'</td><td>'+element.subject_code+'</td></tr>')
-
-                        stt++
+                        $('#mainTable > tbody:last-child').append('<tr ><td>stt</td><td>'+element.subject_code+'</td><td>'+element.room_name+'</td><td>'+element.current_slot+'</td><td>'+convertunix(element.start_time)+'</td><td>'+element.time/60+' phút </td></tr>')
+                        list.push(element)
+                        stt++;
                     }
 
                 })
