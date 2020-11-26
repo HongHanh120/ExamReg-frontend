@@ -21,11 +21,11 @@
 <!--thanh chuc nang tren dau-->
 <div class="toolbar">
     <div class="drop_from_user">
-        <button class="dropbtn">Ninh Hồng Diệp
+        <button class="dropbtn">Tùy chỉnh
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-content">
-            <a href="#">Thông tin cá nhân</a>
+            <a href=" #" type="button" data-toggle="modal" data-target="#changepassModal">Đổi mật khẩu</a>
             <a href="#" id="logOut" type="button"  data-toggle="modal" data-target="#myModal">Đăng xuất</a>
         </div>
     </div>
@@ -42,11 +42,13 @@
     <!--            <span></span>-->
     <!--        </div>-->
     <ul >
-
         <li><a href="monhoc.html"><i class="fas fa-book"></i>Môn học</a></li>
         <li><a href="sinhvien.html"><i class="fas fa-user"></i>Sinh viên</a></li>
+        <li><a href="danhsachcamthi.html"><i class="fas fa-user-slash"></i>Danh sách cấm thi</a></li>
         <li><a href="lophocphan.html"><i class="fas fa-book"></i>Lớp học phần</a></li>
         <li><a href="taokithi.html" ><i class="fas fa-folder"></i>Tạo kì thi</a></li>
+        <li><a href="quanlikithi.html"><i class="fas fa-user-cog"></i>Quản lí kì thi</a></li>
+
     </ul>
 </div>
 <div class="container-fluid" id="quanli">
@@ -59,17 +61,18 @@
                 <div class="form-inline">
                     <div class="form-group">
                         <label>Hiển thị</label>
-                        <select class="custom-select custom-select-sm form-control form-control-sm">
+                        <select id="maxRows" class="custom-select custom-select-sm form-control form-control-sm">
                             <option value="10">10</option>
                             <option value="15">15</option>
                             <option value="20">20</option>
                         </select>
+
+                        <select id="selectExam" class="custom-select custom-select-sm form-control form-control-sm">
+
+                        </select>
                     </div>
-                    <div class="form-group" id="timmonhoc">
-                        <label>Tìm kiếm:</label>
-                        <input type="search" class="form-control form-control-sm" placeholder="Nhập tên lớp học phần">
-                    </div>
-                    <div style="font-size: 120%; margin-top: 20px"><label >Danh sách lớp học phần</label></div>
+
+                    <div style="font-size: 120%; margin-top: 20px; padding-left: 40%"><label >Danh sách lớp học phần</label></div>
 
                 </div>
                 <table id="mainTable" class="table table-bordered p-0 table-striped my-table"style="color: black; text-align:center;">
@@ -79,206 +82,10 @@
                         <th>Mã học phần</th>
                         <th>Tên học phần</th>
                         <th>TC</th>
-                        <th>Chỉnh sửa,xóa</th>
+                        <th> </th>
                     </tr>
                     </thead>
-                    <tbody>
-                    <tr>
-                        <th>Stt</th>
-                        <th>Mã mon</th>
-                        <th>Tên mon</th>
-                        <th>TC</th>
-                        <th>Tiet</th>
-                        <th>Phong hoc</th>
-                        <th>Giang vien</th>
-                    </tr>
-                    <tr>
-                        <th>Stt</th>
-                        <th>Mã mon</th>
-                        <th>Tên mon</th>
-                        <th>TC</th>
-                        <th>Tiet</th>
-                        <th>Phong hoc</th>
-                        <th>Giang vien</th>
-                    </tr>
-                    <tr>
-                        <th>Stt</th>
-                        <th>Mã mon</th>
-                        <th>Tên mon</th>
-                        <th>TC</th>
-                        <th>Tiet</th>
-                        <th>Phong hoc</th>
-                        <th>Giang vien</th>
-                    </tr><tr>
-                        <th>Stt</th>
-                        <th>Mã mon</th>
-                        <th>Tên mon</th>
-                        <th>TC</th>
-                        <th>Tiet</th>
-                        <th>Phong hoc</th>
-                        <th>Giang vien</th>
-                    </tr><tr>
-                        <th>Stt</th>
-                        <th>Mã mon</th>
-                        <th>Tên mon</th>
-                        <th>TC</th>
-                        <th>Tiet</th>
-                        <th>Phong hoc</th>
-                        <th>Giang vien</th>
-                    </tr><tr>
-                        <th>Stt</th>
-                        <th>Mã mon</th>
-                        <th>Tên mon</th>
-                        <th>TC</th>
-                        <th>Tiet</th>
-                        <th>Phong hoc</th>
-                        <th>Giang vien</th>
-                    </tr><tr>
-                        <th>Stt</th>
-                        <th>Mã mon</th>
-                        <th>Tên mon</th>
-                        <th>TC</th>
-                        <th>Tiet</th>
-                        <th>Phong hoc</th>
-                        <th>Giang vien</th>
-                    </tr><tr>
-                        <th>Stt</th>
-                        <th>Mã mon</th>
-                        <th>Tên mon</th>
-                        <th>TC</th>
-                        <th>Tiet</th>
-                        <th>Phong hoc</th>
-                        <th>Giang vien</th>
-                    </tr><tr>
-                        <th>Stt</th>
-                        <th>Mã mon</th>
-                        <th>Tên mon</th>
-                        <th>TC</th>
-                        <th>Tiet</th>
-                        <th>Phong hoc</th>
-                        <th>Giang vien</th>
-                    </tr><tr>
-                        <th>Stt</th>
-                        <th>Mã mon</th>
-                        <th>Tên mon</th>
-                        <th>TC</th>
-                        <th>Tiet</th>
-                        <th>Phong hoc</th>
-                        <th>Giang vien</th>
-                    </tr><tr>
-                        <th>Stt</th>
-                        <th>Mã mon</th>
-                        <th>Tên mon</th>
-                        <th>TC</th>
-                        <th>Tiet</th>
-                        <th>Phong hoc</th>
-                        <th>Giang vien</th>
-                    </tr><tr>
-                        <th>Stt</th>
-                        <th>Mã mon</th>
-                        <th>Tên mon</th>
-                        <th>TC</th>
-                        <th>Tiet</th>
-                        <th>Phong hoc</th>
-                        <th>Giang vien</th>
-                    </tr><tr>
-                        <th>Stt</th>
-                        <th>Mã mon</th>
-                        <th>Tên mon</th>
-                        <th>TC</th>
-                        <th>Tiet</th>
-                        <th>Phong hoc</th>
-                        <th>Giang vien</th>
-                    </tr><tr>
-                        <th>Stt</th>
-                        <th>Mã mon</th>
-                        <th>Tên mon</th>
-                        <th>TC</th>
-                        <th>Tiet</th>
-                        <th>Phong hoc</th>
-                        <th>Giang vien</th>
-                    </tr><tr>
-                        <th>Stt</th>
-                        <th>Mã mon</th>
-                        <th>Tên mon</th>
-                        <th>TC</th>
-                        <th>Tiet</th>
-                        <th>Phong hoc</th>
-                        <th>Giang vien</th>
-                    </tr><tr>
-                        <th>Stt</th>
-                        <th>Mã mon</th>
-                        <th>Tên mon</th>
-                        <th>TC</th>
-                        <th>Tiet</th>
-                        <th>Phong hoc</th>
-                        <th>Giang vien</th>
-                    </tr><tr>
-                        <th>Stt</th>
-                        <th>Mã mon</th>
-                        <th>Tên mon</th>
-                        <th>TC</th>
-                        <th>Tiet</th>
-                        <th>Phong hoc</th>
-                        <th>Giang vien</th>
-                    </tr><tr>
-                        <th>Stt</th>
-                        <th>Mã mon</th>
-                        <th>Tên mon</th>
-                        <th>TC</th>
-                        <th>Tiet</th>
-                        <th>Phong hoc</th>
-                        <th>Giang vien</th>
-                    </tr><tr>
-                        <th>Stt</th>
-                        <th>Mã mon</th>
-                        <th>Tên mon</th>
-                        <th>TC</th>
-                        <th>Tiet</th>
-                        <th>Phong hoc</th>
-                        <th>Giang vien</th>
-                    </tr><tr>
-                        <th>Stt</th>
-                        <th>Mã mon</th>
-                        <th>Tên mon</th>
-                        <th>TC</th>
-                        <th>Tiet</th>
-                        <th>Phong hoc</th>
-                        <th>Giang vien</th>
-                    </tr><tr>
-                        <th>Stt</th>
-                        <th>Mã mon</th>
-                        <th>Tên mon</th>
-                        <th>TC</th>
-                        <th>Tiet</th>
-                        <th>Phong hoc</th>
-                        <th>Giang vien</th>
-                    </tr><tr>
-                        <th>Stt</th>
-                        <th>Mã mon</th>
-                        <th>Tên mon</th>
-                        <th>TC</th>
-                        <th>Tiet</th>
-                        <th>Phong hoc</th>
-                        <th>Giang vien</th>
-                    </tr><tr>
-                        <th>Stt</th>
-                        <th>Mã mon</th>
-                        <th>Tên mon</th>
-                        <th>TC</th>
-                        <th>Tiet</th>
-                        <th>Phong hoc</th>
-                        <th>Giang vien</th>
-                    </tr><tr>
-                        <th>Stt</th>
-                        <th>Mã mon</th>
-                        <th>Tên mon</th>
-                        <th>TC</th>
-                        <th>Tiet</th>
-                        <th>Phong hoc</th>
-                        <th>Giang vien</th>
-                    </tr>
-                    </tbody>
+                    <tbody> </tbody>
                 </table>
 
                 <div class="pagination-container">
@@ -293,7 +100,7 @@
         </div>
         <div class="card-footer">
             <div class="float-right">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addsubjectModal" style="float: right">Thêm lớp</button>
+                <button type="button" id="btnInsertClass" class="btn btn-primary" data-toggle="modal" data-target="#addsubjectModal" style="float: right">Thêm lớp</button>
             </div>
             <div >
                 <button class="btn btn-outline-primary" id="importButton" data-toggle="modal" data-target="#importModal">Nhập</button>
@@ -328,34 +135,29 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Thêm học phần </h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button  type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form>
+                <form data-toggle="validator" role="form">
                     <div class="form-group">
-                        <label for="choosefile" class="col-form-label">Chọn từ tệp:</label>
-                        <input type="file" class="form-control" id="choosefile">
-                    </div>
-                    <div class="form-group">
-                        <label for="codesubject" class="col-form-label">Mã học phần:</label>
-                        <input type="text" class="form-control" id="codesubject">
+                        <label for="classcode" class="col-form-label">Mã học phần:</label>
+                        <input type="text" class="form-control" id="classcode" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="namesubject" class="col-form-label">Tên học phần:</label>
-                        <input type="text"  class="form-control" id="namesubject"></textarea>
+                        <label for="codesubject" class="col-form-label">Tên học phần:</label>
+                        <select id="codesubject" class="custom-select custom-select-sm form-control form-control-sm">
+
+                        </select>
                     </div>
-                    <div class="form-group">
-                        <label for="message-text" class="col-form-label">Tín chỉ:</label>
-                        <input type="text" class="form-control" id="message-text"></textarea>
+                    <div class="modal-footer">
+                        <button id="btnConfirmInsert" type="button" class="btn btn-primary">Thêm học phần</button>
                     </div>
                 </form>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Thêm học phần</button>
-            </div>
+
         </div>
     </div>
 </div>
@@ -372,20 +174,16 @@
                 <form>
                     <div class="form-group">
                         <label for="fixcodesubject" class="col-form-label">Mã học phần:</label>
-                        <input type="text" class="form-control" id="fixcodesubject">
+                        <input id="classcode2"  type="text" class="form-control" id="fixcodesubject">
                     </div>
-                    <div class="form-group">
-                        <label for="fixnamesubject" class="col-form-label">Tên học phần:</label>
-                        <input type="text"  class="form-control" id="fixnamesubject"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="fixportal" class="col-form-label">Tín chỉ:</label>
-                        <input type="text" class="form-control" id="fixportal"></textarea>
-                    </div>
+                    <select id="codesubject2" class="custom-select custom-select-sm form-control form-control-sm">
+
+                    </select>
+
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Xác nhận</button>
+                <button id="confirmFix" type="button" class="btn btn-primary">Xác nhận</button>
             </div>
         </div>
     </div>
@@ -404,13 +202,52 @@
                     <p>Bạn có chắc chắn muốn xóa lớp học phần này.</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Xác nhận</button>
+                    <button id="confirmDel" type="button" class="btn btn-default" data-dismiss="modal">Xác nhận</button>
                 </div>
             </div>
 
         </div>
     </div>
 
+</div>
+<!--đổi mật khẩu-->
+<div class="modal fade" id="changepassModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" >Đổi mật khẩu</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form data-toggle="validator" role="form">
+
+                    <div class="form-group">
+                        <label for="oldpass" class="col-form-label">Mật khẩu cũ:</label>
+                        <input type="password" class="form-control" id="oldpass"  >
+
+                    </div>
+                    <div class="form-group">
+                        <label for="newpass" class="col-form-label">Mật khẩu mới:</label>
+                        <input type="password"  class="form-control" id="newpass"></textarea>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="repass" class="col-form-label">Nhập lại mật khẩu mới:</label>
+                        <input type="password" class="form-control" id="repass"  ></textarea>
+
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary btn-sm" id="xacnhandoi">Xác nhận đổi</button>
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
 </div>
 <!--dang xuat-->
 <div class="container">
@@ -426,7 +263,7 @@
                     <p>Bạn có chắc chắn muốn đăng xuất.</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Đăng xuất</button>
+                    <button  type="button" class="btn btn-default" onclick="dangxuat()">Đăng xuất</button>
                 </div>
             </div>
 
@@ -434,7 +271,8 @@
     </div>
 
 </div>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="lophocphan.js"></script>
 <script src="../js/pagiation.js"></script>
 

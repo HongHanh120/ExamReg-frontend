@@ -4,13 +4,22 @@
 }
 /*Chinh menu*/
 #slidebar{
-    width: 200px;
+    width: 15%;
     height: 100%;
     position: fixed;
-    background-color: #005cbf;
+    background-color: #222d32;
     /*left: -200px;*/
     transition: all 500ms linear;
     margin-top: 50px;
+}
+ #listquanli{
+     background-color: #222d32;
+     border: none;
+     padding-left: 5px;
+     border-radius: 0px;
+ }
+#listquanli:hover{
+    background-color: grey;
 }
 
 #slidebar ul li a {
@@ -40,7 +49,11 @@
     left: 0px;
 }
 #slidebar ul a:hover{
-    background-color: #b3d7ff;
+    background-color: grey;
+}
+#slidebar ul a:active{
+    background-color: black;
+
 }
 .tab-content{
     padding-top : 100px;
@@ -70,7 +83,7 @@
     position: fixed;
     width: 100%;
     height: 50px;
-    background-color: #377bd1;
+    background-color: #b3d7ff;
 }
 .drop_from_user{
     float: right;
@@ -82,15 +95,15 @@
     outline: none;
     color: white;
     padding: 12px 16px;
-    background-color: #377bd1;
+    background-color: #b3d7ff;
     margin: 0;
 }
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #005cbf;
+    background-color:#7abaff;
     min-width:1px;
-    box-shadow: 0px 16px 16px 0px #005cbf;
+    box-shadow: 0px 16px 16px 0px #7abaff;
     z-index: 1;
 }
 .dropdown-content a {
@@ -122,4 +135,19 @@
 }
 #demo{
     padding-top: 52px;
+}
+.modal-header{
+    background-color: #b3d7ff;
+    border-radius: 8px;
+
+}
+.modal-title{
+    background-color: #b3d7ff;
+    color: white;
+    font-weight: bold;
+}
+#importButton{
+    border-color: #377bd1;
+    color: #377bd1;
+    background-color: white;
 }

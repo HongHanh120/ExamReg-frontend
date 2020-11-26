@@ -1,66 +1,119 @@
 function myslide() {
     document.getElementById("slidebar").classList.toggle('active');
 }
-let danhsachmondangki = [{
-    id_course: "int3302",
-    course_name: "Phat trien ung dung web",
-    portal:"3",
-    time:"8:00",
-    date:"24/12/2019",
-    place:"P302-G2"
-},{
-    id_course: "int3302",
-    course_name: "Phat trien ung dung web",
-    portal:"3",
-    time:"8:00",
-    date:"24/12/2019",
-    place:"P302-G2"
-}];
-// let regisTable = $('#regisTable')[0];
-// for(let i=0; i<danhsachmondangki.length; i++){
-//     let row = regisTable.insertRow(-1);
-//     let cell1 = row.insertCell(-1);
-//     let cell2 = row.insertCell(-1);
-//     let cell3 = row.insertCell(-1);
-//     let cell4 = row.insertCell(-1);
-//     let cell5 = row.insertCell(-1);
-//     let cell6 = row.insertCell(-1);
-//     let cell7 = row.insertCell(-1);
-//     let cell8 = row.insertCell(-1);
-//     cell1.innerHTML = i+1;
-//     cell2.innerHTML = danhsachmondangki[i].id_course;
-//     cell3.innerHTML = danhsachmondangki[i].course_name;
-//     cell4.innerHTML = danhsachmondangki[i].portal;
-//     cell5.innerHTML = danhsachmondangki[i].time;
-//     cell6.innerHTML = danhsachmondangki[i].date;
-//     cell7.innerHTML = danhsachmondangki[i].place;
-//     cell8.innerHTML = "<input type='checkbox'>";
-//
-// }
+var list=[]
+var listReg=[]
+var listisReg=[]
+getListExam()
+
+async function getListExam() { // Khoi
+    axios.get('http://localhost:5000/api/v1/examinations/',
+        {
+            headers: {
+                'token': window.localStorage.getItem('token')
+            }
+        }
+    )
+        .then(function (response) {
+            if (response.data.success===true) {
+                response.data.data.exams[0].forEach(element =>
+                    {
+                        $('#selectExam').append('<option value="'+element.id+'">'+element.name+'</option>');
+                    }
+                );
+                khoitao();
+                onChangeExam();
+                getExamtoken();
+
+            }
+            else {
+                console.log(response);
+
+            }
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+
+}
+
+function onChangeExam() {
+    $('#selectExam').on('change',function () {
+        getExamtoken()
+    })
+}
+
+function getExamtoken() {
+
+    axios.get('http://localhost:5000/api/v1/accounts/examination/'+$('#selectExam').val(),
+        {
+            headers: {
+                'token': window.localStorage.getItem('token')
+            }
+        }
+    )
+        .then(function (response) {
+            if (response.data.success===true) {
+                window.localStorage.setItem('examtoken',response.data.data.examinationToken);
+                create();
+            }
+            else {
+                console.log(response.data);
+
+            }
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+}
+
+async function create() { // Khoi
+    $('#mainTable tbody').html("");
+    $('#regisTable tbody').html("");
+
+    axios.get('http://localhost:5000/api/v1/shiftsRooms/',
+        {
+            headers: {
+                'examination-token': window.localStorage.getItem('examtoken')
+            }
+        }
+    )
+        .then(function (response) {
+            if (response.data.success===true) {
+                var stt=1;
+                list=[];
+                console.log(response.data.data.results)
+                response.data.data.results.forEach(function (element) {
+                    if(element.reg==true) {
+                        $('#regisTable > tbody:last-child').append('<tr class="blackclass"><td>'+element.shift_id+'</td><td>'+element.room_id+'</td><td>'+element.current_slot+'</td><td>'+element.subject_code+'</td></tr>')
+                        list.push(element)
+                    }
+                    else
+                    if(element.block==false) {
+                        $('#mainTable > tbody:last-child').append('<tr class="blackclass"><td>'+element.shift_id+'</td><td>'+element.room_id+'</td><td>'+element.current_slot+'</td><td>'+element.subject_code+'</td></tr>')
+                    }
+                })
+                response.data.data.results.forEach(function (element) {
+                    if(element.block==true) {
+                        $('#mainTable > tbody:last-child').append('<tr class="blackclass"><td>'+element.shift_id+'</td><td>'+element.room_id+'</td><td>'+element.current_slot+'</td><td>'+element.subject_code+'</td></tr>')
+                    }
+                })
+                khoitao()
 
 
-addmoreRows()
+            }
+            else {
+                console.log(response);
 
-function addmoreRows() {
-    $('#regisTable > tbody:last-child').append('<tr class="subRow"><td>1</td><td>INT33023</td><td>Phat trien ung dung web</td><td>3</td>' +
-        '<td> <select class="custom-select custom-select-sm form-control form-control-sm">\n' +
-        '                            <option>10</option>\n' +
-        '                            <option>15</option>\n' +
-        '                            <option>20</option>\n' +
-        '                        </select></td>'+
-        '<td> <select class="custom-select custom-select-sm form-control form-control-sm">\n' +
-        '                            <option>10</option>\n' +
-        '                            <option>15</option>\n' +
-        '                            <option>20</option>\n' +
-        '                        </select></td>'+
-        '<td> <select class="custom-select custom-select-sm form-control form-control-sm">\n' +
-        '                            <option>10</option>\n' +
-        '                            <option>15</option>\n' +
-        '                            <option>20</option>\n' +
-        '                        </select></td>'+
-        '<td> <input type="checkbox"></td>' +
-        '</tr>');
+            }
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
 
+}
+function dangxuat() {
+    window.location.href = "../login.html";
 }
 
 

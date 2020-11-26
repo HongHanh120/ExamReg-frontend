@@ -11,19 +11,20 @@
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
           integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-    <script src="user.js"></script>
+
     <link rel="stylesheet" href="user.css">
     <link rel="stylesheet" href="trangchu.css">
+
 </head>
 <body>
 <!--thanh chuc nang tren dau-->
 <div class="toolbar">
     <div class="drop_from_user">
-        <button class="dropbtn">Ninh Hồng Diệp
+        <button class="dropbtn">Tùy chỉnh
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-content">
-            <a href="#">Thông tin cá nhân</a>
+            <a href=" #" type="button" data-toggle="modal" data-target="#changepassModal">Đổi mật khẩu</a>
             <a href="#" id="logOut" type="button"  data-toggle="modal" data-target="#myModal">Đăng xuất</a>
         </div>
     </div>
@@ -48,6 +49,45 @@
 
 </div>
 
+<!--đổi mật khẩu-->
+<div class="modal fade" id="changepassModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Đổi mật khẩu</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form data-toggle="validator" role="form">
+
+                    <div class="form-group">
+                        <label for="oldpass" class="col-form-label">Mật khẩu cũ:</label>
+                        <input type="password" class="form-control" id="oldpass"  >
+
+                    </div>
+                    <div class="form-group">
+                        <label for="newpass" class="col-form-label">Mật khẩu mới:</label>
+                        <input type="password"  class="form-control" id="newpass"></textarea>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="repass" class="col-form-label">Nhập lại mật khẩu mới:</label>
+                        <input type="password" class="form-control" id="repass"  ></textarea>
+
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary btn-sm" id="xacnhandoi">Xác nhận đổi</button>
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</div>
 
 
 
@@ -66,7 +106,7 @@
                     <p>Bạn có chắc chắn muốn đăng xuất.</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Đăng xuất</button>
+                    <button type="button" class="btn btn-default" onclick="dangxuat()">Đăng xuất</button>
                 </div>
             </div>
 
@@ -95,7 +135,7 @@
     </div>
 
 </div>
-
+<script src="trangchu.js"></script>
 
 </body>
 </html>

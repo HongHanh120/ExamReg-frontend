@@ -21,3 +21,8 @@ thead{
 th{
     text-align: center;
 }
+.lienket{
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 100%;
+}

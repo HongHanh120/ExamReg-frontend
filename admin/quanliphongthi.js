@@ -3,13 +3,10 @@ function myslide() {
 }
 
 
-
-console.log('asdasdasd thang ')
-
-crete();
-async function crete() { // Khoi
+create()
+async function create() { // Khoi
     $('#mainTable tbody').html("");
-    axios.get('http://localhost:5000/api/v1/examinations/',
+    axios.get('http://localhost:5000/api/v1/rooms/',
         {
             headers: {
                 'token': window.localStorage.getItem('token')
@@ -19,14 +16,12 @@ async function crete() { // Khoi
         .then(function (response) {
             if (response.data.success===true) {
                 var stt=1;
-                response.data.data.exams[0].forEach(element =>
+
+                response.data.data.rooms.forEach(element =>
                     {
-                        $('#mainTable > tbody:last-child').append('<tr><td>'+stt+'</td><td>'+element.name+'</td><td class="hideclass">'+element.id+'<td><i onclick="setidtostorage('+element.id+')" class="far fa-edit" type="button"  data-toggle="modal" data-target="#editModal"></i>&nbsp;<i onclick="setidtostorage('+element.id+')" class="fas fa-trash-alt" type="button"  data-toggle="modal" data-target="#deleteModal"></i></td></tr>');
+                        $('#mainTable > tbody:last-child').append('<tr><td>'+stt+'</td><td>'+element.name+'</td><td>'+element.slot+'</td><td><i onclick="setidtostorage('+element.id+')" class="far fa-edit" type="button"  data-toggle="modal" data-target="#editModal"></i>&nbsp;<i onclick="setidtostorage('+element.id+')" class="fas fa-trash-alt" type="button"  data-toggle="modal" data-target="#deleteModal"></i></td></tr>');
                         stt++;
-
                     }
-
-
                 )
                 khoitao()
 
@@ -43,18 +38,16 @@ async function crete() { // Khoi
 
 }
 
-//-----------------------------------
 
-//tao ki thi moi
-$('#submit_insert').on('click',function () {
-    console.log("create exam")
-    createExam()
+$('#confirmInsert').on('click',function () {
+    createRoom();
 })
 
-async function createExam() {
-    console.log(document.getElementById("namesubject").value);
-    axios.post('http://localhost:5000/api/v1/examinations', {
-            name: document.getElementById("namesubject").value
+async function createRoom() { // Khoi
+    axios.post('http://localhost:5000/api/v1/rooms/',
+        {
+            "name":document.getElementById('room').value ,
+            "slot": parseInt(document.getElementById('chair').value)
         },
         {
             headers: {
@@ -64,48 +57,72 @@ async function createExam() {
     )
         .then(function (response) {
             if (response.data.success===true) {
-                alert("them thanh cong");
+                alert('Tao thanh cong');
                 location.reload();
+
+
+
             }
             else {
-                console.log(response.data);
-
+                console.log(response.data.reason);
+                alert(response.data.reason);
             }
         })
         .catch(function (error) {
             console.log(error);
         });
+
 }
 
 
 
-
-
-function setidtostorage(id) {
-    getExaminfo();
-    document.getElementById("fixnamesubject").value=name;
-    window.localStorage.setItem('tempId',id);
-}
-
-
-async function getExaminfo(){
-    let temp=parseInt(window.localStorage.getItem('tempId'));
-    axios.get('http://localhost:5000/api/v1/examinations/information?id='+temp,
+async function getRoomInfo(id) { // Lay thong tin room cho vao edit form
+    axios.get('http://localhost:5000/api/v1/rooms/information/?id='+id,
         {
             headers: {
-                token: window.localStorage.getItem('token')
-            },
-
+                'token': window.localStorage.getItem('token')
+            }
         }
     )
         .then(function (response) {
             if (response.data.success===true) {
-                console.log(response.data.data.rows.name)
-                document.getElementById('fixnamesubject').value=response.data.data.rows.name;
+                document.getElementById('fixroom').value=response.data.data.existedRoom.name;
+                document.getElementById('fixchair').value=response.data.data.existedRoom.slot;
+
             }
             else {
                 console.log(response);
+            }
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
 
+}
+
+
+//Xoa
+$('#confirmDel').on('click',function () {
+    deleteRoom()
+})
+async function deleteRoom() {
+    let id= window.localStorage.getItem('tempId')
+
+    axios.delete('http://localhost:5000/api/v1/rooms/?id='+id,
+        {
+            headers: {
+                'token': window.localStorage.getItem('token')
+            }
+        }
+    )
+        .then(function (response) {
+            if (response.data.success===true) {
+                alert("xoa thanh cong");
+                location.reload();
+            }
+            else {
+                console.log(response.data);
+                alert(response.data.reason)
             }
         })
         .catch(function (error) {
@@ -114,17 +131,18 @@ async function getExaminfo(){
 }
 
 
-
+//update
 
 $('#submitfixname').on('click',function () {
-    updateExam()
+    updateRoom()
 })
 
-async function updateExam() {
+async function updateRoom() {
 
-    axios.put('http://localhost:5000/api/v1/examinations', {
+    axios.put('http://localhost:5000/api/v1/rooms/', {
             id:window.localStorage.getItem('tempId'),
-            name: document.getElementById("fixnamesubject").value
+            name: document.getElementById("fixroom").value,
+            slot:document.getElementById("fixchair").value
         },
         {
             headers: {
@@ -146,55 +164,13 @@ async function updateExam() {
             console.log(error);
         });
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//Xoa mon
-$('#confirmDel').on('click',function () {
-    deleteExam()
-})
-async function deleteExam() {
-    let idExam= window.localStorage.getItem('tempId')
-
-    axios.delete('http://localhost:5000/api/v1/examinations/?id='+idExam,
-        {
-            headers: {
-                'token': window.localStorage.getItem('token')
-            }
-        }
-    )
-        .then(function (response) {
-            if (response.data.success===true) {
-                alert("xoa thanh cong");
-                location.reload();
-            }
-            else {
-                console.log(response.data);
-                alert(response.data.reason)
-            }
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
-}
 function dangxuat() {
     window.location.href = "../login.html";
 }
 
 
 
-
-
-
+function setidtostorage(id) {
+    window.localStorage.setItem('tempId',id);
+    getRoomInfo(id);
+}

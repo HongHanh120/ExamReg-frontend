@@ -1,38 +1,13 @@
-getListExam()
-
 function myslide() {
     document.getElementById("slidebar").classList.toggle('active');
 }
-function exportTableToExcel(tableID, filename = ''){
-    var downloadLink;
-    var dataType = 'application/vnd.ms-excel';
-    var tableSelect = document.getElementById(tableID);
-    var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
 
-    // Specify file name
-    filename = filename?filename+'.xls':'dulieu.xls';
-
-    // Create download link element
-    downloadLink = document.createElement("a");
-
-    document.body.appendChild(downloadLink);
-
-    if(navigator.msSaveOrOpenBlob){
-        var blob = new Blob(['\ufeff', tableHTML], {
-            type: dataType
-        });
-        navigator.msSaveOrOpenBlob( blob, filename);
-    }else{
-        // Create a link to the file
-        downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+getListExam();
+getListSubject()
 
 
-        downloadLink.download = filename;
 
 
-        downloadLink.click();
-    }
-}
 
 
 
@@ -48,6 +23,7 @@ async function getListExam() { // Khoi
     )
         .then(function (response) {
             if (response.data.success===true) {
+                var stt=1;
                 response.data.data.exams[0].forEach(element =>
                     {
                         $('#selectExam').append('<option value="'+element.id+'">'+element.name+'</option>');
@@ -55,7 +31,6 @@ async function getListExam() { // Khoi
                 );
                 khoitao();
                 onChangeExam();
-                getExamtoken();
 
             }
             else {
@@ -72,12 +47,11 @@ async function getListExam() { // Khoi
 function onChangeExam() {
     $('#selectExam').on('change',function () {
         getExamtoken()
-
     })
 }
 
 function getExamtoken() {
-    $('#mainTable tbody').html("");
+
     axios.get('http://localhost:5000/api/v1/accounts/examination/'+$('#selectExam').val(),
         {
             headers: {
@@ -100,9 +74,8 @@ function getExamtoken() {
         });
 }
 
-async function create() { // Khoi
 
-
+function getListSubject() {
     axios.get('http://localhost:5000/api/v1/shiftsRooms/',
         {
             headers: {
@@ -112,15 +85,100 @@ async function create() { // Khoi
     )
         .then(function (response) {
             if (response.data.success===true) {
+
+
+                response.data.data.results.forEach(element =>
+                    {
+                        let subcode=element.subject_code.toString();
+                        console.log(subcode)
+                        $('#selectSubject').append('<option value="'+element.id+'">'+element.subject_code+':'+element.name+'</option>');
+
+                    }
+
+                )
+                khoitao()
+
+            }
+            else {
+                console.log(response);
+
+            }
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+}
+
+
+
+
+
+
+$('#confirmImportModal').on('click',function (e) {
+    uploadfile()
+})
+
+
+async function uploadfile() { //login vao app
+    var formData=new FormData();
+    formData.append('classesStudents',document.getElementById('customFile').files[0]);
+    const config = {
+        headers: {
+            'examination-token': window.localStorage.getItem('examtoken'),
+            'content-type': 'application/x-www-form-urlencoded'
+        },
+        onUploadProgress: function(progressEvent) {
+            var percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total)
+            console.log(percentCompleted)
+        }
+    }
+    axios.post('http://localhost:5000/api/v1/classesStudents/import',
+        formData
+        ,
+        config
+    )
+        .then(function (response) {
+            if (response.data.success===true) {
+                alert('Them thanh cong')
+
+            }
+            else {
+                console.log(response.data.reason);
+                alert(response.data.reason)
+
+            }
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+
+}
+
+
+$('#getliststudentin').on('click',function (e) {
+    create()
+});
+async function create() { // Khoi
+
+    console.log($('selectSubject').val());
+    axios.get('http://localhost:5000/api/v1/shiftsRoomsStudents/examreg?shift_room_id='+$('selectSubject').val(),
+        {
+            headers: {
+                'examination-token': window.localStorage.getItem('examtoken')
+            }
+        }
+    )
+        .then(function (response) {
+            if (response.data.success===true) {
                 var stt=1;
-                list=[];
+
                 console.log(response.data.data.results)
                 response.data.data.results.forEach(function (element) {
-                    if(element.reg==false) {
+
                         $('#mainTable > tbody:last-child').append('<tr class="blackclass"><td>'+stt+'</td><td>'+element.shift_id+'</td><td>'+element.room_id+'</td><td>'+element.current_slot+'</td><td>'+element.subject_code+'</td></tr>')
 
                         stt++
-                    }
+
 
                 })
                 khoitao()

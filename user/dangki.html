@@ -13,17 +13,17 @@
           integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link rel="stylesheet" href="user.css">
     <link rel="stylesheet" href="dangki.css">
-
+    <link rel="stylesheet" href="../css/custom.css">
 </head>
 <body>
 <!--thanh chuc nang tren dau-->
 <div class="toolbar">
     <div class="drop_from_user">
-        <button class="dropbtn">Ninh Hồng Diệp
+        <button class="dropbtn">Tùy chỉnh
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-content">
-            <a href="#">Thông tin cá nhân</a>
+            <a href=" #" type="button" data-toggle="modal" data-target="#changepassModal">Đổi mật khẩu</a>
             <a href="#" id="logOut" type="button"  data-toggle="modal" data-target="#myModal">Đăng xuất</a>
         </div>
     </div>
@@ -56,16 +56,17 @@
                             <option value="15">15</option>
                             <option value="20">20</option>
                         </select>
+                        <select id="selectExam" class="custom-select custom-select-sm form-control form-control-sm">
+
+                        </select>
                     </div>
-                    <div class="form-group" id="timmonhoc">
-                        <label>Tìm kiếm:</label>
-                        <input type="search" class="form-control form-control-sm" placeholder="Nhập tên môn học">
-                    </div>
-                    <div style="font-size: 120%; margin-top: 20px"><label >Danh sách môn học bạn được phép đăng kí thi.</label></div>
+
+                    <div style="font-size: 120%; margin-top: 20px;padding-left: 30%"><label >Danh sách môn học bạn được phép đăng kí thi.</label></div>
 
                 </div>
-                <table id="mainTable" class="table table-bordered p-0 table-striped my-table"style="color: black; text-align:center;">
-                    <thead class="thead-dark">
+                <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                <table id="mainTable" class="table table-bordered table-striped mb-0"style="color: black; text-align:center;">
+                    <thead class="thead-dark" style="position: relative">
                     <tr>
                         <th>Stt</th>
                         <th>Mã môn</th>
@@ -74,7 +75,7 @@
                         <th>Thời gian thi</th>
                         <th>Ngày</th>
                         <th>Địa điểm</th>
-                        <th>Đăng kí</th>
+                        <th >Đăng kí</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -86,6 +87,7 @@
                         <th>Tiet</th>
                         <th>Phong hoc</th>
                         <th>Giang vien</th>
+                        <th><input type="checkbox"></th>
                     </tr>
                     <tr>
                         <th>Stt</th>
@@ -275,6 +277,7 @@
                     </tr>
                     </tbody>
                 </table>
+                </div>
                 <div class="row w-100 m-0 mt-3">
                     <div class="col-sm-12 col-md-5">
                         <p id="subTable_info"></p>
@@ -289,15 +292,99 @@
                 </div>
             </div>
         </div>
+        <div class="card-body">
+            <div class="container-fluid p-0 table-responsive">
+                <div>
+                    <p style="font-size: 120%; margin-top: 20px; font-weight: bold">Các môn bạn đã đăng kí được.</p>
+                </div>
+                <table id="regisTable" class="table table-bordered p-0 table-striped my-table"style="color: black; text-align:center;">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th>Stt</th>
+                        <th>Mã môn</th>
+                        <th>Tên môn</th>
+                        <th>TC</th>
+                        <th>Thời gian thi</th>
+                        <th>Ngày</th>
+                        <th>Địa điểm</th>
+                        <th>Hủy đăng kí</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
         <div class="card-footer">
             <div class="float-right">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal-confirm"  >Xác nhận</button>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal-confirm"  style="float: right">Xác nhận</button>
             </div>
+                                                                                            <i class="fas fa-trash-alt" data-toggle="modal" data-target="#regtest"></i>
         </div>
     </div>
 </div>
+<!--xóa đăng kí-->
+<div class="container">
+    <div class="modal fade" id="deleteModal" role="dialog">
+        <div class="modal-dialog">
 
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Bạn có chắc chắn xóa.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Xác nhận</button>
+                </div>
+            </div>
 
+        </div>
+    </div>
+
+</div>
+<!--đổi mật khẩu-->
+<div class="modal fade" id="changepassModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Đổi mật khẩu</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form data-toggle="validator" role="form">
+
+                    <div class="form-group">
+                        <label for="oldpass" class="col-form-label">Mật khẩu cũ:</label>
+                        <input type="password" class="form-control" id="oldpass"  >
+
+                    </div>
+                    <div class="form-group">
+                        <label for="newpass" class="col-form-label">Mật khẩu mới:</label>
+                        <input type="password"  class="form-control" id="newpass"></textarea>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="repass" class="col-form-label">Nhập lại mật khẩu mới:</label>
+                        <input type="password" class="form-control" id="repass"  ></textarea>
+
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary btn-sm" id="xacnhandoi">Xác nhận đổi</button>
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</div>
 
 <!--dang xuat-->
 <div class="container">
@@ -313,7 +400,8 @@
                     <p>Bạn có chắc chắn muốn đăng xuất.</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Đăng xuất</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><a href=""></a>
+                        Đăng xuất</button>
                 </div>
             </div>
 
@@ -343,9 +431,34 @@
     </div>
 
 </div>
+<!-- dang ky-->
+<div class="container">
+    <div class="modal fade" id="regtest" role="dialog">
+        <div class="modal-dialog">
 
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Bạn có chắc chắn muốn xóa lớp học phần này.</p>
+                </div>
+                <div class="modal-footer">
+                    <button id="confirmDel" type="button" class="btn btn-default" onclick="dangxuat()">Xác nhận</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<!--<script src="../js/pagiation.js"></script>-->
 <script src="dangki.js"></script>
-<script src="../js/pagiation.js"></script>
+
 </body>
 
 </html>

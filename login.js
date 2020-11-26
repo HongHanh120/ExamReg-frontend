@@ -10,11 +10,18 @@ async function login() { //login vao app
         .then(function (response) {
             if (response.data.success===true) {
                 settoken(response.data.data.token);
-                window.location.href = "admin/admin.html";
+                if(response.data.data.admin!==0)
+                {
+                    window.location.href = "admin/admin.html";
+                }
+                else
+                {
+                    window.location.href = "user/user.html";
+                }
             }
             else {
                 console.log(response.data.reason);
-
+                alert('sai ten dang nhap hoac mat khau');
             }
         })
         .catch(function (error) {
